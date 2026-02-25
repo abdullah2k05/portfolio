@@ -8,10 +8,10 @@ export default function Projects() {
           <div className="section-label">03 — Work</div>
           <div className="section-title">Featured <em>Projects</em></div>
         </div>
-        <div className="projects-timeline">
+        <div className="projects-grid">
           {projects.map((project, idx) => (
-            <div key={project.id} className={`project-timeline-item reveal reveal-delay-${(idx % 3) + 1}`}>
-              <div className="project-timeline-num">Project {String(idx + 1).padStart(2, '0')}</div>
+            <div key={project.id} className={`project-card reveal reveal-delay-${(idx % 3) + 1}`}>
+              <div className="project-num">Project {String(idx + 1).padStart(2, '0')}</div>
               <h3>{project.title.toUpperCase()}</h3>
               <h4>{project.tech.join(' · ')}</h4>
               <p>{project.description}</p>

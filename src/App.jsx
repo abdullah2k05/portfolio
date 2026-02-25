@@ -55,7 +55,7 @@ export default function App() {
     let revealObserver;
     const setupTimer = setTimeout(() => {
       /* ── CURSOR HOVER ── */
-      const interactables = 'a, button, .skill-card, .project-timeline-item, .exp-item, .event-card, .highlight-card, .stat-box, .edu-item';
+      const interactables = 'a, button, .skill-card, .project-card, .exp-item, .event-card, .highlight-card, .stat-box, .edu-item';
       const addHover = () => document.body.classList.add('cursor-hover');
       const removeHover = () => document.body.classList.remove('cursor-hover');
       document.querySelectorAll(interactables).forEach(el => {
