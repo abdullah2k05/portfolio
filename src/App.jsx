@@ -13,27 +13,6 @@ import Footer from './components/Footer';
 
 export default function App() {
   useEffect(() => {
-    /* ── CURSOR ── */
-    const dot = document.getElementById('cursor-dot');
-    const ring = document.getElementById('cursor-ring');
-    let mx = 0, my = 0, rx = 0, ry = 0;
-
-    const onMouseMove = (e) => { mx = e.clientX; my = e.clientY; };
-    document.addEventListener('mousemove', onMouseMove);
-
-    let animId;
-    (function animateCursor() {
-      if (dot && ring) {
-        dot.style.left = mx + 'px';
-        dot.style.top = my + 'px';
-        rx += (mx - rx) * 0.25;
-        ry += (my - ry) * 0.25;
-        ring.style.left = rx + 'px';
-        ring.style.top = ry + 'px';
-      }
-      animId = requestAnimationFrame(animateCursor);
-    })();
-
     /* ── NAVBAR SCROLL ── */
     const navbar = document.getElementById('navbar');
     const onScroll = () => {
@@ -54,15 +33,6 @@ export default function App() {
     /* Deferred setup — wait for React to finish rendering all components */
     let revealObserver;
     const setupTimer = setTimeout(() => {
-      /* ── CURSOR HOVER ── */
-      const interactables = 'a, button, .skill-card, .project-card, .exp-item, .event-card, .highlight-card, .stat-box, .edu-item';
-      const addHover = () => document.body.classList.add('cursor-hover');
-      const removeHover = () => document.body.classList.remove('cursor-hover');
-      document.querySelectorAll(interactables).forEach(el => {
-        el.addEventListener('mouseenter', addHover);
-        el.addEventListener('mouseleave', removeHover);
-      });
-
       /* ── SCROLL REVEAL ── */
       const revealEls = document.querySelectorAll('.reveal');
       revealObserver = new IntersectionObserver((entries) => {
@@ -123,20 +93,14 @@ export default function App() {
 
     return () => {
       clearTimeout(setupTimer);
-      document.removeEventListener('mousemove', onMouseMove);
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('scroll', onHeroScroll);
-      cancelAnimationFrame(animId);
       if (revealObserver) revealObserver.disconnect();
     };
   }, []);
 
   return (
     <>
-      {/* Custom Cursor */}
-      <div id="cursor-dot"></div>
-      <div id="cursor-ring"></div>
-
       <Navbar />
       <main>
         <Hero />

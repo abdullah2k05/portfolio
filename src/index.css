@@ -31,7 +31,7 @@ body {
   background: var(--black);
   color: var(--white);
   font-family: var(--font-body);
-  cursor: none;
+  
   overflow-x: hidden;
 }
 
@@ -42,36 +42,7 @@ body {
 ::-webkit-scrollbar-track { background: var(--black-2); }
 ::-webkit-scrollbar-thumb { background: var(--gray); }
 
-/* ═══════════════════════════════════════════
-   CUSTOM CURSOR
-═══════════════════════════════════════════ */
-#cursor-dot {
-  position: fixed;
-  width: 8px; height: 8px;
-  background: var(--white-pure);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: width 0.2s var(--ease-out), height 0.2s var(--ease-out), background 0.2s;
-}
-#cursor-ring {
-  position: fixed;
-  width: 36px; height: 36px;
-  border: 1px solid rgba(200,200,200,0.5);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9998;
-  transform: translate(-50%, -50%);
-  transition: width 0.35s var(--ease-out), height 0.35s var(--ease-out),
-              border-color 0.2s, background 0.2s;
-}
-body.cursor-hover #cursor-dot { width: 14px; height: 14px; background: var(--accent); }
-body.cursor-hover #cursor-ring {
-  width: 54px; height: 54px;
-  border-color: var(--accent);
-  background: var(--accent-glow);
-}
+
 
 /* ═══════════════════════════════════════════
    NOISE OVERLAY
@@ -144,7 +115,7 @@ nav.scrolled {
   display: flex;
 }
 .nav-icons a:hover { color: var(--white); transform: translateY(-2px); }
-.hamburger { display: none; flex-direction: column; gap: 5px; cursor: none; padding: 8px; background: none; border: none; }
+.hamburger { display: none; flex-direction: column; gap: 5px;  padding: 8px; background: none; border: none; }
 .hamburger span { display: block; width: 22px; height: 1px; background: var(--silver); transition: all 0.3s; }
 
 /* Mobile nav overlay */
@@ -219,7 +190,7 @@ nav.scrolled {
   padding: 0 48px;
 }
 
-.hero-text { }
+
 
 .hero-tag {
   font-family: var(--font-mono);
@@ -280,7 +251,7 @@ nav.scrolled {
   text-transform: uppercase;
   text-decoration: none;
   border: none;
-  cursor: none;
+  
   position: relative;
   overflow: hidden;
   transition: transform 0.2s var(--ease-out), box-shadow 0.3s;
@@ -307,7 +278,7 @@ nav.scrolled {
   text-transform: uppercase;
   text-decoration: none;
   border: 1px solid rgba(255,255,255,0.25);
-  cursor: none;
+  
   position: relative;
   overflow: hidden;
   transition: transform 0.2s, border-color 0.3s, box-shadow 0.3s;
@@ -544,7 +515,7 @@ section { padding: 120px 0; }
   border: 1px solid rgba(255,255,255,0.04);
   border-left: 2px solid var(--gray);
   transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s var(--ease-out);
-  cursor: none;
+  
 }
 .highlight-card:hover {
   border-left-color: var(--accent);
@@ -582,7 +553,7 @@ section { padding: 120px 0; }
   position: relative;
   overflow: hidden;
   transition: transform 0.35s var(--ease-out), box-shadow 0.35s, border-color 0.3s;
-  cursor: none;
+  
 }
 .skill-card::before {
   content: '';
@@ -652,7 +623,7 @@ section { padding: 120px 0; }
   position: relative;
   display: flex; flex-direction: column;
   transition: transform 0.3s var(--ease-out), border-color 0.3s, box-shadow 0.3s;
-  cursor: none;
+  
 }
 .project-card:hover {
   transform: translateY(-6px);
@@ -708,7 +679,7 @@ section { padding: 120px 0; }
   text-decoration: none;
   display: flex; align-items: center; gap: 6px;
   transition: color 0.2s;
-  cursor: none;
+  
 }
 .project-link:hover { color: var(--white); }
 .project-link svg { width: 12px; height: 12px; }
@@ -809,7 +780,7 @@ section { padding: 120px 0; }
   border: 1px solid rgba(255,255,255,0.1);
   color: var(--white);
   display: flex; align-items: center; justify-content: center;
-  cursor: none;
+  
   pointer-events: all;
   transition: background 0.2s, border-color 0.2s, transform 0.2s;
   font-size: 18px;
@@ -819,7 +790,7 @@ section { padding: 120px 0; }
 .photo-dot {
   width: 24px; height: 2px;
   background: rgba(255,255,255,0.15);
-  cursor: none;
+  
   transition: background 0.2s, width 0.3s;
   border: none;
 }
@@ -836,7 +807,7 @@ section { padding: 120px 0; }
   border: 1px solid rgba(255,255,255,0.04);
   display: flex; align-items: flex-start; gap: 20px;
   transition: transform 0.3s var(--ease-out), border-color 0.3s, box-shadow 0.3s;
-  cursor: none;
+  
 }
 .event-card:hover {
   transform: translateX(6px);
@@ -1043,7 +1014,7 @@ section { padding: 120px 0; }
   letter-spacing: 2px;
   text-transform: uppercase;
   text-decoration: none;
-  cursor: none;
+  
   position: relative;
   overflow: hidden;
   transition: transform 0.2s, box-shadow 0.3s;
@@ -1060,14 +1031,14 @@ section { padding: 120px 0; }
 ═══════════════════════════════════════════ */
 #contact { background: var(--black-3); }
 .contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
-.contact-info { }
+
 .contact-link-item {
   display: flex; align-items: center; gap: 20px;
   padding: 24px 0;
   border-bottom: 1px solid rgba(255,255,255,0.05);
   text-decoration: none;
   transition: padding-left 0.3s var(--ease-out);
-  cursor: none;
+  
   color: inherit;
 }
 .contact-link-item:hover { padding-left: 12px; }
@@ -1084,7 +1055,7 @@ section { padding: 120px 0; }
   border-color: var(--silver);
   background: var(--gray-mid);
 }
-.contact-link-text { }
+
 .contact-link-label {
   font-family: var(--font-mono);
   font-size: 10px;
@@ -1130,7 +1101,7 @@ section { padding: 120px 0; }
   letter-spacing: 2px;
   text-transform: uppercase;
   border: none;
-  cursor: none;
+  
   transition: transform 0.2s, box-shadow 0.3s, background 0.2s;
   position: relative;
   overflow: hidden;
