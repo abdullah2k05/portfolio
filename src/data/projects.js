@@ -1,11 +1,11 @@
 export const projects = [
   {
     id: 1,
-    title: "Financial RAG Model",
+    title: "Money Lens",
     description:
       "A Retrieval-Augmented Generation (RAG) system specialized in financial data analysis, leveraging AI and Machine Learning to extract insights from financial documents.",
     tech: ["Python", "AI", "Machine Learning", "Data Analysis"],
-    liveUrl: "#",
+    liveUrl: "https://money-lens-ai.vercel.app/",
     githubUrl: "https://github.com/Abdullah2k05/financial_rag_model",
   },
   {
@@ -41,7 +41,7 @@ export const projects = [
     description:
       "A high-performance backend REST API service providing mathematical computation endpoints built with Express.js.",
     tech: ["Node.js", "Express.js", "REST API", "Backend"],
-    liveUrl: "#",
+    liveUrl: "https://cgpa.smmrival.com",
     githubUrl: "https://github.com/Abdullah2k05/calculator-api",
   },
   {

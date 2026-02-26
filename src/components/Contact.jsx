@@ -9,9 +9,9 @@ export default function Contact() {
     e.preventDefault();
     setStatus('sending');
 
-    const SERVICE_ID = 'YOUR_EMAILJS_SERVICE_ID';
-    const TEMPLATE_ID = 'YOUR_EMAILJS_TEMPLATE_ID';
-    const PUBLIC_KEY = 'YOUR_EMAILJS_PUBLIC_KEY';
+    const SERVICE_ID = 'service_207y9ts';
+    const TEMPLATE_ID = 'template_5gc3898';
+    const PUBLIC_KEY = 'Jv4ftPje1NPcMOAxU';
 
     emailjs
       .sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, PUBLIC_KEY)
@@ -42,11 +42,11 @@ export default function Contact() {
         </div>
         <div className="contact-layout">
           <div className="contact-info reveal">
-            <a href="mailto:chribalc64@gmail.com" className="contact-link-item">
+            <a href="mailto:muhammad-abdullah@smmrival.com" className="contact-link-item">
               <div className="contact-link-icon">✉</div>
               <div className="contact-link-text">
                 <div className="contact-link-label">Email</div>
-                <div className="contact-link-value">chribalc64@gmail.com</div>
+                <div className="contact-link-value">muhammad-abdullah@smmrival.com</div>
               </div>
             </a>
             <a href="https://linkedin.com/in/abdullah2k05" target="_blank" rel="noreferrer" className="contact-link-item">
