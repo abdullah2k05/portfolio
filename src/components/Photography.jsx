@@ -1,9 +1,15 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 
 const slides = [
-  { label: "PUCon '24 — Event Photography" },
-  { label: "FCIT Media Society — Production" },
-  { label: "TechnoVerse CUI — Campus Event" },
+  { label: "PUCon '24 — Event Photography" ,
+    image: "/images/one.jpg"
+  },
+  { label: "FCIT Media Society — Production",
+    image: "/images/two.jpg"
+  },
+  { label: "TechnoVerse CUI — Campus Event",
+    image: "/images/three.jpg"
+  },
 ];
 
 const events = [
