@@ -42,7 +42,7 @@ export default function Contact() {
         </div>
         <div className="contact-layout">
           <div className="contact-info reveal">
-            <a href="mailto:abdullah@mabdullah.top" className="contact-link-item">
+            <a href="mailto:abdullah@mabdullah.top" target="_blank" rel="noreferrer" className="contact-link-item">
               <div className="contact-link-icon">✉</div>
               <div className="contact-link-text">
                 <div className="contact-link-label">Email</div>

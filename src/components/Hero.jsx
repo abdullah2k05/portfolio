@@ -14,8 +14,8 @@ export default function Hero() {
           <p className="hero-role">AI Automation Engineer &amp; Data Science Specialist</p>
           <p className="hero-desc">I design intelligent systems, AI-powered workflows, and scalable backend architectures for global impact.</p>
           <div className="hero-cta">
-            <a href="#projects" className="btn-primary"><span>View Projects</span></a>
-            <a href="#contact" className="btn-outline">Get in Touch</a>
+            <a href="#projects" className="btn-primary" target="_blank" rel="noreferrer"><span>View Projects</span></a>
+            <a href="#contact" className="btn-outline" target="_blank" rel="noreferrer">Get in Touch</a>
           </div>
         </div>
 

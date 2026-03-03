@@ -15,11 +15,11 @@ export default function Navbar() {
 
   return (
     <nav id="navbar">
-      <a href="#hero" className="nav-logo">MA<span>.</span></a>
+      <a href="#hero" className="nav-logo" target="_blank" rel="noreferrer">MA<span>.</span></a>
       <ul className={`nav-links${mobileOpen ? ' open' : ''}`} id="navLinks">
         {navLinks.map(link => (
           <li key={link.href}>
-            <a href={link.href} onClick={() => setMobileOpen(false)}>{link.label}</a>
+            <a href={link.href} target="_blank" rel="noreferrer" onClick={() => setMobileOpen(false)}>{link.label}</a>
           </li>
         ))}
       </ul>
