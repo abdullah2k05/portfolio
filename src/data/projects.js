@@ -5,7 +5,7 @@ export const projects = [
     description:
       "A Retrieval-Augmented Generation (RAG) system specialized in financial data analysis, leveraging AI and Machine Learning to extract insights from financial documents.",
     tech: ["Python", "AI", "Machine Learning", "Data Analysis"],
-    liveUrl: "https://money-lens-ai.vercel.app/",
+    liveUrl: "https://money-lens.mabdullah.top",
     githubUrl: "https://github.com/Abdullah2k05/financial_rag_model",
   },
   {

@@ -42,11 +42,11 @@ export default function Contact() {
         </div>
         <div className="contact-layout">
           <div className="contact-info reveal">
-            <a href="mailto:muhammad-abdullah@smmrival.com" className="contact-link-item">
+            <a href="mailto:abdullah@mabdullah.top" className="contact-link-item">
               <div className="contact-link-icon">✉</div>
               <div className="contact-link-text">
                 <div className="contact-link-label">Email</div>
-                <div className="contact-link-value">muhammad-abdullah@smmrival.com</div>
+                <div className="contact-link-value">abdullah@mabdullah.top</div>
               </div>
             </a>
             <a href="https://linkedin.com/in/abdullah2k05" target="_blank" rel="noreferrer" className="contact-link-item">

@@ -45,7 +45,8 @@ export default function About() {
             <div className="highlight-card">
               <div className="highlight-card-icon">📊</div>
               <h3>Social Media &amp; Entrepreneurship</h3>
-              <p>Founder of SMM Rival — scaling brand presence through strategic automation and digital marketing.</p>
+              <p>Founder of <a href="https://smmrival.com">SMM Rival</a>
+ — scaling brand presence through strategic automation and digital marketing.</p>
             </div>
           </div>
         </div>
