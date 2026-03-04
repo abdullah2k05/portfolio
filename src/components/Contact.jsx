@@ -7,7 +7,7 @@ export default function Contact() {
   const [errorMessage, setErrorMessage] = useState('');
 
   const MAILING_ADDRESS = 'abdullah@mabdullah.top';
-  const SERVICE_ID = 'service_cssigpk';
+  const SERVICE_ID = 'service_ceyxccv';
   const TEMPLATE_ID = 'template_203r9y4';
   const PUBLIC_KEY = 'aqTQsFtDtYL-Cmagn';
 
