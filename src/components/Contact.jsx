@@ -16,8 +16,27 @@ export default function Contact() {
     setErrorMessage('');
     setStatus('sending');
 
+    const formData = new FormData(formRef.current);
+    const senderName = (formData.get('user_name') || '').toString().trim();
+    const senderEmail = (formData.get('user_email') || '').toString().trim();
+    const emailSubject = (formData.get('subject') || '').toString().trim();
+    const emailMessage = (formData.get('message') || '').toString().trim();
+
+    const templateParams = {
+      to_email: MAILING_ADDRESS,
+      user_name: senderName,
+      user_email: senderEmail,
+      from_name: senderName,
+      from_email: senderEmail,
+      reply_to: senderEmail,
+      name: senderName,
+      email: senderEmail,
+      subject: emailSubject,
+      message: emailMessage,
+    };
+
     emailjs
-      .sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, { publicKey: PUBLIC_KEY })
+      .send(SERVICE_ID, TEMPLATE_ID, templateParams, { publicKey: PUBLIC_KEY })
       .then(() => {
         setStatus('sent');
         formRef.current.reset();
@@ -81,7 +100,6 @@ export default function Contact() {
           </div>
 
           <form ref={formRef} onSubmit={handleSubmit} className="contact-form reveal reveal-delay-2">
-            <input type="hidden" name="to_email" value={MAILING_ADDRESS} />
             <div className="form-group">
               <input type="text" name="user_name" placeholder="Your Name" required />
             </div>
