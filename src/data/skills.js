@@ -15,7 +15,7 @@ export const skills = [
     id: "backend",
     icon: "🌐",
     title: "Backend & Web",
-    tags: ["Node.js", "Express", "Django", "RESTful APIs", "MongoDB"],
+    tags: ["Node.js", "Express", "Django", "RESTful APIs", "MongoDB", "SQL"],
   },
   {
     id: "data",
