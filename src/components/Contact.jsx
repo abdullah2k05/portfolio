@@ -4,24 +4,30 @@ import emailjs from '@emailjs/browser';
 export default function Contact() {
   const formRef = useRef(null);
   const [status, setStatus] = useState('idle');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const MAILING_ADDRESS = 'abdullah@mabdullah.top';
+  const SERVICE_ID = 'service_cssigpk';
+  const TEMPLATE_ID = 'template_203r9y4';
+  const PUBLIC_KEY = 'aqTQsFtDtYL-Cmagn';
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setErrorMessage('');
     setStatus('sending');
 
-    const SERVICE_ID = 'service_207y9ts';
-    const TEMPLATE_ID = 'template_5gc3898';
-    const PUBLIC_KEY = 'Jv4ftPje1NPcMOAxU';
-
     emailjs
-      .sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, PUBLIC_KEY)
+      .sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, { publicKey: PUBLIC_KEY })
       .then(() => {
         setStatus('sent');
         formRef.current.reset();
         setTimeout(() => setStatus('idle'), 4000);
       })
-      .catch(() => {
+      .catch((err) => {
+        const message = err?.text || err?.message || 'Failed to send message';
+        console.error('EmailJS send error:', err);
         setStatus('error');
+        setErrorMessage(message);
         setTimeout(() => setStatus('idle'), 4000);
       });
   };
@@ -42,11 +48,11 @@ export default function Contact() {
         </div>
         <div className="contact-layout">
           <div className="contact-info reveal">
-            <a href="mailto:abdullah@mabdullah.top" target="_blank" rel="noreferrer" className="contact-link-item">
+            <a href={`mailto:${MAILING_ADDRESS}`} target="_blank" rel="noreferrer" className="contact-link-item">
               <div className="contact-link-icon">✉</div>
               <div className="contact-link-text">
                 <div className="contact-link-label">Email</div>
-                <div className="contact-link-value">abdullah@mabdullah.top</div>
+                <div className="contact-link-value">{MAILING_ADDRESS}</div>
               </div>
             </a>
             <a href="https://linkedin.com/in/abdullah2k05" target="_blank" rel="noreferrer" className="contact-link-item">
@@ -75,6 +81,7 @@ export default function Contact() {
           </div>
 
           <form ref={formRef} onSubmit={handleSubmit} className="contact-form reveal reveal-delay-2">
+            <input type="hidden" name="to_email" value={MAILING_ADDRESS} />
             <div className="form-group">
               <input type="text" name="user_name" placeholder="Your Name" required />
             </div>
@@ -90,6 +97,7 @@ export default function Contact() {
             <button type="submit" className="form-submit" disabled={status === 'sending'}>
               {btnLabel[status]}
             </button>
+            {errorMessage ? <div className="contact-link-label">{errorMessage}</div> : null}
           </form>
         </div>
       </div>
