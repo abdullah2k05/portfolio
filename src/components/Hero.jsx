@@ -16,6 +16,14 @@ export default function Hero() {
           <div className="hero-cta">
             <a href="#projects" className="btn-primary" target="_blank" rel="noreferrer"><span>View Projects</span></a>
             <a href="#contact" className="btn-outline" target="_blank" rel="noreferrer">Get in Touch</a>
+            <a
+              href="/Muhammad-Abdullah-CV.pdf"
+              className="btn-outline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View CV
+            </a>
           </div>
         </div>
 
