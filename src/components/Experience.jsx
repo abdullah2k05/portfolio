@@ -1,6 +1,4 @@
-import { experience } from '../data/experience';
-
-export default function Experience() {
+export default function Experience({ experience = [] }) {
   return (
     <section id="experience">
       <div className="container">

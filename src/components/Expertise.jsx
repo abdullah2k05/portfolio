@@ -1,6 +1,4 @@
-import { skills } from '../data/skills';
-
-export default function Expertise() {
+export default function Expertise({ skills = [] }) {
   return (
     <section id="expertise">
       <div className="container">

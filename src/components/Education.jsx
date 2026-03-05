@@ -1,4 +1,4 @@
-export default function Education() {
+export default function Education({ education = [] }) {
   return (
     <section id="education">
       <div className="container">
@@ -7,18 +7,14 @@ export default function Education() {
           <div className="section-title">Education <em>&amp; Training</em></div>
         </div>
         <div className="edu-timeline">
-          <div className="edu-item reveal reveal-delay-1">
-            <div className="edu-year">2024 — 2028</div>
-            <h3>UNIVERSITY OF THE PUNJAB</h3>
-            <h4>BS Data Science — PUCIT, Lahore</h4>
-            <p>Pursuing a Bachelor's degree in Data Science with focus on AI, machine learning, statistical analysis, and modern software engineering. Active in multiple societies and leadership roles.</p>
-          </div>
-          <div className="edu-item reveal reveal-delay-2">
-            <div className="edu-year">2022 — 2024</div>
-            <h3>INTERMEDIATE PRE-ENGINEERING</h3>
-            <h4>FSc — Pakistan</h4>
-            <p>Completed intermediate studies with a strong foundation in mathematics, physics, and computer science, building the analytical mindset for a technology-driven career.</p>
-          </div>
+          {education.map((item, idx) => (
+            <div key={item.id} className={`edu-item reveal reveal-delay-${(idx % 3) + 1}`}>
+              <div className="edu-year">{item.period}</div>
+              <h3>{item.title}</h3>
+              <h4>{item.subtitle}</h4>
+              <p>{item.description}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>

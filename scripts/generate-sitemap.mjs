@@ -6,10 +6,17 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, "..");
 
-const SITE_URL = (process.env.SITE_URL || "https://example.com").replace(
-  /\/+$/,
-  "",
-);
+const normalizeBaseUrl = (raw) => {
+  if (!raw) return null;
+  const withProtocol = /^https?:\/\//i.test(raw) ? raw : `https://${raw}`;
+  return withProtocol.replace(/\/+$/, "");
+};
+
+const SITE_URL =
+  normalizeBaseUrl(process.env.SITE_URL) ||
+  normalizeBaseUrl(process.env.VERCEL_PROJECT_PRODUCTION_URL) ||
+  normalizeBaseUrl(process.env.VERCEL_URL) ||
+  "https://example.com";
 const OUTPUT_PATH = path.join(rootDir, "public", "sitemap.xml");
 const PAGES_DIR = path.join(rootDir, "src", "pages");
 

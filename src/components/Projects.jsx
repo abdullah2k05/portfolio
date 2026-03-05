@@ -1,6 +1,4 @@
-import { projects } from '../data/projects';
-
-export default function Projects() {
+export default function Projects({ projects = [] }) {
   return (
     <section id="projects">
       <div className="container">

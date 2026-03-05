@@ -11,6 +11,7 @@
     "postbuild": "npm run sitemap"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.57.4",
     "react": "^18.3.0",
     "react-dom": "^18.3.0",
     "@emailjs/browser": "^4.0.0"
