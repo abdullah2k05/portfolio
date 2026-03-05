@@ -16,7 +16,7 @@ const SITE_URL =
   normalizeBaseUrl(process.env.SITE_URL) ||
   normalizeBaseUrl(process.env.VERCEL_PROJECT_PRODUCTION_URL) ||
   normalizeBaseUrl(process.env.VERCEL_URL) ||
-  "https://example.com";
+  "https://mabdullah.top";
 const OUTPUT_PATH = path.join(rootDir, "public", "sitemap.xml");
 const PAGES_DIR = path.join(rootDir, "src", "pages");
 
