@@ -11,6 +11,16 @@ export default function Contact() {
   const TEMPLATE_ID = 'template_203r9y4';
   const PUBLIC_KEY = 'aqTQsFtDtYL-Cmagn';
 
+  const createSubmissionId = () => {
+    if (typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function') {
+      return crypto.randomUUID();
+    }
+
+    return `${Date.now()}-${Math.random().toString(36).slice(2, 10)}`;
+  };
+
+  const getUtcTimestamp = () => new Date().toISOString();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrorMessage('');
@@ -21,6 +31,10 @@ export default function Contact() {
     const senderEmail = (formData.get('user_email') || '').toString().trim();
     const emailSubject = (formData.get('subject') || '').toString().trim();
     const emailMessage = (formData.get('message') || '').toString().trim();
+    const submissionId = createSubmissionId();
+    const submittedAtUtc = getUtcTimestamp();
+    const subjectBase = emailSubject || 'Portfolio Contact Form';
+    const uniqueSubject = `[Portfolio] ${subjectBase} | ${submittedAtUtc} | ${submissionId}`;
 
     const templateParams = {
       to_email: MAILING_ADDRESS,
@@ -31,7 +45,12 @@ export default function Contact() {
       reply_to: senderEmail,
       name: senderName,
       email: senderEmail,
-      subject: emailSubject,
+      subject: uniqueSubject,
+      original_subject: emailSubject,
+      submission_id: submissionId,
+      submitted_at_utc: submittedAtUtc,
+      // Helps avoid threading when used in templates/body for Gmail and Zoho.
+      thread_breaker: `${submittedAtUtc}-${submissionId}`,
       message: emailMessage,
     };
 
