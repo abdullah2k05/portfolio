@@ -11,15 +11,18 @@ export default function Contact() {
   const TEMPLATE_ID = 'template_203r9y4';
   const PUBLIC_KEY = 'aqTQsFtDtYL-Cmagn';
 
-  const createSubmissionId = () => {
-    if (typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function') {
-      return crypto.randomUUID();
-    }
-
-    return `${Date.now()}-${Math.random().toString(36).slice(2, 10)}`;
+  const getLocalAmPmTimestamp = () => {
+    const now = new Date();
+    return now.toLocaleString('en-US', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: true,
+    });
   };
-
-  const getUtcTimestamp = () => new Date().toISOString();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -31,10 +34,9 @@ export default function Contact() {
     const senderEmail = (formData.get('user_email') || '').toString().trim();
     const emailSubject = (formData.get('subject') || '').toString().trim();
     const emailMessage = (formData.get('message') || '').toString().trim();
-    const submissionId = createSubmissionId();
-    const submittedAtUtc = getUtcTimestamp();
+    const submittedAtLocal = getLocalAmPmTimestamp();
     const subjectBase = emailSubject || 'Portfolio Contact Form';
-    const uniqueSubject = `[Portfolio] ${subjectBase} | ${submittedAtUtc} | ${submissionId}`;
+    const uniqueSubject = `${subjectBase} | ${submittedAtLocal}`;
 
     const templateParams = {
       to_email: MAILING_ADDRESS,
@@ -47,10 +49,9 @@ export default function Contact() {
       email: senderEmail,
       subject: uniqueSubject,
       original_subject: emailSubject,
-      submission_id: submissionId,
-      submitted_at_utc: submittedAtUtc,
+      submitted_at_local: submittedAtLocal,
       // Helps avoid threading when used in templates/body for Gmail and Zoho.
-      thread_breaker: `${submittedAtUtc}-${submissionId}`,
+      thread_breaker: submittedAtLocal,
       message: emailMessage,
     };
 
