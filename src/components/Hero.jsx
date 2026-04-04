@@ -11,7 +11,7 @@ export default function Hero() {
         <div className="hero-text">
           <div className="hero-tag">Let's Collaborate</div>
           <h1 className="hero-name">MUHAMMAD<span>ABDULLAH</span></h1>
-          <p className="hero-role">Full-Stack Product Engineer &amp; AI Automation Engineer &amp; Data Science Specialist</p>
+          <p className="hero-role">Full-Stack Product Engineer &amp; AI Automation Engineer</p>
           <p className="hero-desc">I build scalable, multi-surface ecosystems and AI-powered platforms at the intersection of entrepreneurship and innovation.</p>
           <div className="hero-cta">
             <a href="#projects" className="btn-primary" target="_blank" rel="noreferrer"><span>View Projects</span></a>
