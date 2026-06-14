@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Sitemap: https://mabdullah.top/sitemap.xml
+# If you want to disallow specific paths, add lines like:
+# Disallow: /admin/
