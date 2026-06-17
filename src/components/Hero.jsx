@@ -1,4 +1,4 @@
-const ProfilePhoto = "public/images/me.jpg";
+const ProfilePhoto = "/images/me.jpg";
 
 export default function Hero() {
   return (
@@ -40,7 +40,6 @@ export default function Hero() {
         <div className="hero-image-wrap">
           <div className="hero-image-frame">
             <picture>
-              <source srcSet="/images/me.webp" type="image/webp" />
               <img
                 src={ProfilePhoto}
                 alt="Muhammad Abdullah"

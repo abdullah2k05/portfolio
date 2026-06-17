@@ -46,10 +46,6 @@ export default function Photography({ slides = [], events = [] }) {
               {slides.map((slide, i) => (
                 <div key={slide.id || i} className="photo-slide">
                   <picture>
-                    <source
-                      srcSet={slide.image.replace(/\.jpg$|\.png$/i, ".webp")}
-                      type="image/webp"
-                    />
                     <img
                       src={slide.image}
                       alt={slide.label}

@@ -26,9 +26,9 @@ export const events = [
 ];
 
 export const photos = [
-  { id: 1, src: "public/images/one.jpg", caption: "University Event" },
-  { id: 2, src: "public/images/two.jpg", caption: "Tech Conference" },
-  { id: 3, src: "public/images/three.jpg", caption: "Media Production" },
-  { id: 4, src: "public/images/me.jpg", caption: "Profile / Studio" },
-  { id: 5, src: "public/images/one.jpg", caption: "Campus Life" },
+  { id: 1, src: "/images/one.jpg", caption: "University Event" },
+  { id: 2, src: "/images/two.jpg", caption: "Tech Conference" },
+  { id: 3, src: "/images/three.jpg", caption: "Media Production" },
+  { id: 4, src: "/images/me.jpg", caption: "Profile / Studio" },
+  { id: 5, src: "/images/one.jpg", caption: "Campus Life" },
 ];
