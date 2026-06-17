@@ -1,4 +1,4 @@
-const ProfilePhoto = "/images/me.jpg";
+const ProfilePhoto = "public/images/me.jpg";
 
 export default function Hero() {
   return (
