@@ -398,6 +398,30 @@ export default function Admin() {
     fetchEntries();
   }
 
+  async function moveEntry(entryId, direction) {
+    const section = Object.keys(entries).find(s =>
+      entries[s].some(e => e.id === entryId)
+    );
+    if (!section) return;
+
+    const list = entries[section];
+    const idx = list.findIndex(e => e.id === entryId);
+    if (idx === -1) return;
+
+    const neighborIdx = direction === 'up' ? idx - 1 : idx + 1;
+    if (neighborIdx < 0 || neighborIdx >= list.length) return;
+
+    const entry = list[idx];
+    const neighbor = list[neighborIdx];
+
+    const temp = entry.sort_order;
+    await supabase.from('content_entries').update({ sort_order: neighbor.sort_order }).eq('id', entry.id);
+    await supabase.from('content_entries').update({ sort_order: temp }).eq('id', neighbor.id);
+
+    fetchEntries();
+    notify(`Entry moved ${direction}`);
+  }
+
   function addEntry(sectionKey) {
     const config = SECTION_MAP[sectionKey];
     const defaults = {};
@@ -417,11 +441,18 @@ export default function Admin() {
   async function saveNewEntry() {
     if (editing === null) return;
     setSaving(s => ({ ...s, [editing]: true }));
-    const sectionConfig = SECTION_MAP[editForm.section];
-    const sortMax = (entries[editForm.section] || []).length;
+
+    const existing = entries[editForm.section] || [];
+    for (const entry of existing) {
+      await supabase
+        .from('content_entries')
+        .update({ sort_order: entry.sort_order + 1 })
+        .eq('id', entry.id);
+    }
+
     const { error } = await supabase
       .from('content_entries')
-      .insert({ section: editForm.section, sort_order: sortMax, data: editForm.data })
+      .insert({ section: editForm.section, sort_order: 0, data: editForm.data })
       .select();
     setSaving(s => ({ ...s, [editing]: false }));
     if (error) { notify(error.message, 'error'); return; }
@@ -677,6 +708,18 @@ export default function Admin() {
                               {section.preview(entry.data)}
                             </div>
                             <div className="admin-entry-actions">
+                              <button
+                                onClick={() => moveEntry(entry.id, 'up')}
+                                disabled={idx === 0 || saving[entry.id]}
+                                className="admin-btn admin-btn-sm"
+                                title="Move up"
+                              >↑</button>
+                              <button
+                                onClick={() => moveEntry(entry.id, 'down')}
+                                disabled={idx === sectionEntries.length - 1 || saving[entry.id]}
+                                className="admin-btn admin-btn-sm"
+                                title="Move down"
+                              >↓</button>
                               <button onClick={() => startEdit(entry)} className="admin-btn admin-btn-sm">
                                 ✏️ Edit
                               </button>

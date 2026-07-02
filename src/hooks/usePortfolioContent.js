@@ -16,7 +16,11 @@ export function usePortfolioContent() {
       .order('sort_order')
       .then(({ data, error }) => {
         setLoading(false);
-        if (error || !data || data.length === 0) return;
+        if (error) {
+          console.warn('Supabase fetch error, using defaults:', error.message);
+          return;
+        }
+        if (!data || data.length === 0) return;
 
         const grouped = {};
         for (const row of data) {
@@ -31,6 +35,10 @@ export function usePortfolioContent() {
           ...prev,
           ...grouped,
         }));
+      })
+      .catch(err => {
+        setLoading(false);
+        console.warn('Supabase fetch failed, using defaults:', err);
       });
   }, []);
 
