@@ -18,6 +18,8 @@ function HomePage() {
   const { content } = usePortfolioContent();
   useEffect(() => {
     const revealEls = document.querySelectorAll('.reveal');
+    if (revealEls.length === 0) return;
+
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) entry.target.classList.add('revealed');
@@ -29,7 +31,7 @@ function HomePage() {
     return () => {
       revealObserver.disconnect();
     };
-  }, []);
+  }, [content]);
 
   useEffect(() => {
     const navbar = document.getElementById('navbar');
@@ -123,7 +125,7 @@ function HomePage() {
       clearTimeout(setupTimer);
       cleanupFns.forEach((fn) => fn());
     };
-  }, []);
+  }, [content]);
 
   return (
     <>
