@@ -1127,7 +1127,7 @@ footer {
 .footer-copy {
   font-family: var(--font-mono);
   font-size: 10px;
-  color: var(--gray);
+  color: #c7c7c7;
   letter-spacing: 1px;
 }
 .footer-links { display: flex; gap: 20px; }
@@ -1135,7 +1135,7 @@ footer {
   font-family: var(--font-mono);
   font-size: 10px;
   letter-spacing: 1px;
-  color: var(--gray);
+  color: #c7c7c7;
   text-decoration: none;
   text-transform: uppercase;
   transition: color 0.2s;
