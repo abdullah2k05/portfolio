@@ -4,6 +4,7 @@ const navLinks = [
   { label: 'About', href: '#about' },
   { label: 'Expertise', href: '#expertise' },
   { label: 'Projects', href: '#projects' },
+  { label: 'Products', href: '/products' },
   { label: 'Media', href: '#photography' },
   { label: 'Experience', href: '#experience' },
   { label: 'Education', href: '#education' },
@@ -19,7 +20,11 @@ export default function Navbar() {
       <ul className={`nav-links${mobileOpen ? ' open' : ''}`} id="navLinks">
         {navLinks.map(link => (
           <li key={link.href}>
-            <a href={link.href} onClick={() => setMobileOpen(false)}>{link.label}</a>
+            {link.href.startsWith('#') ? (
+              <a href={link.href} onClick={() => setMobileOpen(false)}>{link.label}</a>
+            ) : (
+              <a href={link.href} onClick={() => setMobileOpen(false)}>{link.label}</a>
+            )}
           </li>
         ))}
       </ul>

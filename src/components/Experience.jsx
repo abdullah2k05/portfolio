@@ -3,7 +3,7 @@ export default function Experience({ experience = [] }) {
     <section id="experience">
       <div className="container">
         <div className="reveal">
-          <div className="section-label">06 — Career</div>
+          <div className="section-label">05 — Career</div>
           <div className="section-title">Experience <em>&amp; Societies</em></div>
         </div>
         <div className="exp-timeline">

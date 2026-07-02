@@ -5,7 +5,6 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Expertise from './components/Expertise';
 import Projects from './components/Projects';
-import Products from './components/Products';
 import Photography from './components/Photography';
 import Experience from './components/Experience';
 import Education from './components/Education';
@@ -13,6 +12,7 @@ import CTABanner from './components/CTABanner';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Admin from './pages/Admin';
+import ProductsPage from './pages/ProductsPage';
 import { usePortfolioContent } from './hooks/usePortfolioContent';
 
 function HomePage() {
@@ -144,8 +144,6 @@ function HomePage() {
         <div className="section-divider"></div>
         <Projects projects={content.projects} />
         <div className="section-divider"></div>
-        <Products products={content.products} />
-        <div className="section-divider"></div>
         <Photography slides={content.photoSlides} events={content.events} />
         <div className="section-divider"></div>
         <Experience experience={content.experience} />
@@ -165,6 +163,7 @@ export default function App() {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
+      <Route path="/products" element={<ProductsPage />} />
       <Route path="/ribal" element={<Admin />} />
       <Route path="/ribal/*" element={<Admin />} />
     </Routes>

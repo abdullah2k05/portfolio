@@ -3,7 +3,7 @@ export default function Education({ education = [] }) {
     <section id="education">
       <div className="container">
         <div className="reveal">
-          <div className="section-label">07 — Background</div>
+          <div className="section-label">06 — Background</div>
           <div className="section-title">Education <em>&amp; Training</em></div>
         </div>
         <div className="edu-timeline">

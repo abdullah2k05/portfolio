@@ -82,7 +82,7 @@ export default function Contact() {
     <section id="contact">
       <div className="container">
         <div className="reveal">
-          <div className="section-label">08 — Reach Out</div>
+          <div className="section-label">07 — Reach Out</div>
           <div className="section-title">Let's <em>Connect</em></div>
         </div>
         <div className="contact-layout">
