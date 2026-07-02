@@ -2,8 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://mabdullah.top</loc>
-    <lastmod>2026-06-17T10:46:12.699Z</lastmod>
+    <lastmod>2026-07-02T19:45:04.727Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://mabdullah.top/Admin</loc>
+    <lastmod>2026-07-02T19:45:04.728Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>
