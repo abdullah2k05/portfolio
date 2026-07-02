@@ -23,6 +23,9 @@ export default function Hero() {
             <a href="#projects" className="btn-primary">
               <span>View Projects</span>
             </a>
+            <a href="/products" className="btn-outline">
+              View Products
+            </a>
             <a href="#contact" className="btn-outline">
               Get in Touch
             </a>
