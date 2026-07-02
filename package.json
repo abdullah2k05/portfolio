@@ -11,9 +11,11 @@
     "postbuild": "npm run sitemap"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.0.0",
+    "@supabase/supabase-js": "^2.109.0",
     "react": "^18.3.0",
     "react-dom": "^18.3.0",
-    "@emailjs/browser": "^4.0.0"
+    "react-router-dom": "^7.18.1"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.0.0",

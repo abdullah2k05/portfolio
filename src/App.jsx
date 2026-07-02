@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -10,11 +11,11 @@ import Education from './components/Education';
 import CTABanner from './components/CTABanner';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import Admin from './pages/Admin';
 import { defaultPortfolioContent as content } from './data/defaultPortfolioContent';
 
-export default function App() {
+function HomePage() {
   useEffect(() => {
-    // Re-attach reveal observer
     const revealEls = document.querySelectorAll('.reveal');
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -30,14 +31,12 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    /* ── NAVBAR SCROLL ── */
     const navbar = document.getElementById('navbar');
     const onScroll = () => {
       if (navbar) navbar.classList.toggle('scrolled', window.scrollY > 60);
     };
     window.addEventListener('scroll', onScroll);
 
-    /* ── HERO PARALLAX ── */
     const heroBg = document.getElementById('heroBgText');
     const onHeroScroll = () => {
       if (heroBg) {
@@ -56,9 +55,7 @@ export default function App() {
   useEffect(() => {
     const cleanupFns = [];
 
-    /* Deferred setup — wait for React to finish rendering */
     const setupTimer = setTimeout(() => {
-      /* ── SKILL CARD GLOW ── */
       document.querySelectorAll('.skill-card').forEach((card) => {
         const onCardMove = (e) => {
           const rect = card.getBoundingClientRect();
@@ -71,7 +68,6 @@ export default function App() {
         cleanupFns.push(() => card.removeEventListener('mousemove', onCardMove));
       });
 
-      /* ── CARD TILT ── */
       document.querySelectorAll('[data-tilt]').forEach((el) => {
         const onTiltMove = (e) => {
           const rect = el.getBoundingClientRect();
@@ -90,7 +86,6 @@ export default function App() {
         cleanupFns.push(() => el.removeEventListener('mouseleave', onTiltLeave));
       });
 
-      /* ── RIPPLE ── */
       document.querySelectorAll('.btn-primary, .btn-outline, .btn-glow, .form-submit').forEach((btn) => {
         const onRippleClick = (e) => {
           const r = document.createElement('span');
@@ -105,7 +100,6 @@ export default function App() {
         cleanupFns.push(() => btn.removeEventListener('click', onRippleClick));
       });
 
-      /* ── SMOOTH SCROLL NAV ── */
       document.querySelectorAll('a[href^="#"]').forEach((a) => {
         const href = a.getAttribute('href') || '';
         if (href.length <= 1) return;
@@ -158,5 +152,15 @@ export default function App() {
       </main>
       <Footer />
     </>
+  );
+}
+
+export default function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/ribal" element={<Admin />} />
+      <Route path="/ribal/*" element={<Admin />} />
+    </Routes>
   );
 }
