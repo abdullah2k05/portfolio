@@ -28,6 +28,11 @@ export default function Projects({ projects = [] }) {
                   GitHub
                 </a>
               </div>
+              {project.linkUrl && project.linkLabel && (
+                <a href={project.linkUrl} target="_blank" rel="noreferrer" style={{ color: '#c7c7c7', textDecoration: 'underline', fontSize: 13, marginTop: 8, display: 'inline-block' }}>
+                  {project.linkLabel} ↗
+                </a>
+              )}
             </div>
           ))}
         </div>

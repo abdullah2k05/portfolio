@@ -21,6 +21,11 @@ export default function Expertise({ skills = [] }) {
                   <span key={tag} className="skill-tag">{tag}</span>
                 ))}
               </div>
+              {skill.linkUrl && skill.linkLabel && (
+                <a href={skill.linkUrl} target="_blank" rel="noreferrer" style={{ color: '#c7c7c7', textDecoration: 'underline', fontSize: 13, marginTop: 8, display: 'inline-block' }}>
+                  {skill.linkLabel} ↗
+                </a>
+              )}
             </div>
           ))}
         </div>

@@ -8,7 +8,7 @@
   --gray-dark: #1e1e1e;
   --gray-mid: #2e2e2e;
   --gray: #444;
-  --gray-light: #888;
+  --gray-light: #c7c7c7;
   --silver: #aaa;
   --white: #f0f0f0;
   --white-pure: #ffffff;
@@ -83,7 +83,7 @@ nav.scrolled {
   text-decoration: none;
   position: relative;
 }
-.nav-logo span { color: var(--silver); }
+.nav-logo span { color: #c7c7c7; }
 .nav-links {
   display: flex; gap: 36px; list-style: none; align-items: center;
 }
@@ -216,7 +216,7 @@ nav.scrolled {
   margin-bottom: 24px;
   opacity: 0; animation: fadeUp 0.9s var(--ease-out) 0.35s forwards;
 }
-.hero-name span { color: var(--silver); display: block; }
+.hero-name span { color: #c7c7c7; display: block; }
 
 .hero-role {
   font-family: var(--font-serif);
@@ -423,8 +423,9 @@ section { padding: 120px 0; }
 
 .section-label {
   font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 4px;
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: #c7c7c7;
   text-transform: uppercase;
   color: var(--gray-light);
   margin-bottom: 12px;
@@ -446,7 +447,7 @@ section { padding: 120px 0; }
 .section-title em {
   font-family: var(--font-serif);
   font-style: italic;
-  color: var(--silver);
+  color: #c7c7c7;
   font-size: 0.7em;
 }
 
@@ -602,7 +603,7 @@ section { padding: 120px 0; }
   transition: color 0.2s, border-color 0.2s, background 0.2s;
 }
 .skill-card:hover .skill-tag {
-  color: var(--silver);
+  color: #c7c7c7;
   border-color: rgba(200,200,200,0.15);
   background: rgba(200,200,200,0.05);
 }
@@ -648,7 +649,7 @@ section { padding: 120px 0; }
   font-family: var(--font-serif);
   font-style: italic;
   font-size: 14px;
-  color: var(--silver);
+  color: #c7c7c7;
   margin-bottom: 16px;
 }
 .project-card p {
@@ -831,7 +832,7 @@ section { padding: 120px 0; }
 .event-info p {
   font-family: var(--font-mono);
   font-size: 11px;
-  color: var(--silver);
+  color: #c7c7c7;
   letter-spacing: 1px;
   margin-bottom: 4px;
 }
@@ -891,7 +892,7 @@ section { padding: 120px 0; }
   font-family: var(--font-serif);
   font-style: italic;
   font-size: 15px;
-  color: var(--silver);
+  color: #c7c7c7;
   margin-bottom: 12px;
 }
 .exp-item p {
@@ -950,7 +951,7 @@ section { padding: 120px 0; }
   font-family: var(--font-serif);
   font-style: italic;
   font-size: 15px;
-  color: var(--silver);
+  color: #c7c7c7;
   margin-bottom: 12px;
 }
 .edu-item p {
@@ -994,7 +995,7 @@ section { padding: 120px 0; }
 .cta-title em {
   font-family: var(--font-serif);
   font-style: italic;
-  color: var(--silver);
+  color: #c7c7c7;
 }
 .cta-sub {
   font-size: 14px;

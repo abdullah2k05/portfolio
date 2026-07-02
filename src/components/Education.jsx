@@ -13,6 +13,11 @@ export default function Education({ education = [] }) {
               <h3>{item.title}</h3>
               <h4>{item.subtitle}</h4>
               <p>{item.description}</p>
+              {item.linkUrl && item.linkLabel && (
+                <a href={item.linkUrl} target="_blank" rel="noreferrer" style={{ color: '#c7c7c7', textDecoration: 'underline', fontSize: 13, marginTop: 8, display: 'inline-block' }}>
+                  {item.linkLabel} ↗
+                </a>
+              )}
             </div>
           ))}
         </div>

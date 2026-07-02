@@ -107,6 +107,11 @@ export default function Photography({ slides = [], events = [] }) {
                   <h4>{ev.title}</h4>
                   <p>{ev.org}</p>
                   <div className="event-role">{ev.role}</div>
+                  {ev.linkUrl && ev.linkLabel && (
+                    <a href={ev.linkUrl} target="_blank" rel="noreferrer" style={{ color: '#c7c7c7', textDecoration: 'underline', fontSize: 13, marginTop: 8, display: 'inline-block' }}>
+                      {ev.linkLabel} ↗
+                    </a>
+                  )}
                 </div>
               </div>
             ))}

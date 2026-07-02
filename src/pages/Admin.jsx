@@ -9,8 +9,19 @@ const SECTIONS = [
     icon: '📝', desc: 'Bio paragraphs shown in the About section',
     fields: [
       { key: 'text', label: 'Paragraph Text', type: 'textarea', rows: 4 },
+      { key: 'linkLabel', label: 'Link Label (optional)', type: 'text' },
+      { key: 'linkUrl', label: 'Link URL (optional)', type: 'text' },
     ],
-    preview: (d) => <p style={{ fontSize: 15, lineHeight: 1.7, color: '#aaa', maxWidth: 500 }}>{d.text}</p>,
+    preview: (d) => (
+      <div>
+        <p style={{ fontSize: 15, lineHeight: 1.7, color: '#aaa', maxWidth: 500 }}>{d.text}</p>
+        {d.linkUrl && d.linkLabel && (
+          <div style={{ fontSize: 12, color: '#4a9eff', marginTop: 8, fontFamily: "'JetBrains Mono', monospace" }}>
+            {d.linkLabel} ↗
+          </div>
+        )}
+      </div>
+    ),
   },
   {
     key: 'aboutStats', label: 'About — Stats',
@@ -18,11 +29,18 @@ const SECTIONS = [
     fields: [
       { key: 'value', label: 'Value (e.g. "3+")', type: 'text' },
       { key: 'label', label: 'Label (e.g. "AI Projects Built")', type: 'text' },
+      { key: 'linkLabel', label: 'Link Label (optional)', type: 'text' },
+      { key: 'linkUrl', label: 'Link URL (optional)', type: 'text' },
     ],
     preview: (d) => (
       <div style={{ display: 'inline-flex', flexDirection: 'column', alignItems: 'center', padding: '16px 24px', background: '#161616', borderRadius: 8, border: '1px solid #2e2e2e' }}>
         <span style={{ fontSize: 28, fontWeight: 700, color: '#fff', fontFamily: "'Bebas Neue', sans-serif", letterSpacing: 2 }}>{d.value}</span>
         <span style={{ fontSize: 11, color: '#888', marginTop: 4, textTransform: 'uppercase', letterSpacing: 1 }}>{d.label}</span>
+        {d.linkUrl && d.linkLabel && (
+          <div style={{ fontSize: 12, color: '#4a9eff', marginTop: 8, fontFamily: "'JetBrains Mono', monospace" }}>
+            {d.linkLabel} ↗
+          </div>
+        )}
       </div>
     ),
   },
@@ -41,6 +59,11 @@ const SECTIONS = [
         <div style={{ fontSize: 22, marginBottom: 6 }}>{d.icon}</div>
         <div style={{ fontSize: 14, fontWeight: 600, color: '#f0f0f0', marginBottom: 4 }}>{d.title}</div>
         <div style={{ fontSize: 13, color: '#888', lineHeight: 1.6 }}>{d.text}</div>
+        {d.linkUrl && d.linkLabel && (
+          <div style={{ fontSize: 12, color: '#4a9eff', marginTop: 8, fontFamily: "'JetBrains Mono', monospace" }}>
+            {d.linkLabel} ↗
+          </div>
+        )}
       </div>
     ),
   },
@@ -51,6 +74,8 @@ const SECTIONS = [
       { key: 'icon', label: 'Icon (emoji)', type: 'text' },
       { key: 'title', label: 'Category Title', type: 'text' },
       { key: 'tags', label: 'Skills (one per line)', type: 'array' },
+      { key: 'linkLabel', label: 'Link Label (optional)', type: 'text' },
+      { key: 'linkUrl', label: 'Link URL (optional)', type: 'text' },
     ],
     preview: (d) => (
       <div style={{ padding: '16px 20px', background: '#161616', borderRadius: 8, border: '1px solid #2e2e2e' }}>
@@ -61,6 +86,11 @@ const SECTIONS = [
             <span key={t} style={{ fontSize: 11, padding: '2px 8px', background: '#2e2e2e', borderRadius: 4, color: '#aaa' }}>{t}</span>
           ))}
         </div>
+        {d.linkUrl && d.linkLabel && (
+          <div style={{ fontSize: 12, color: '#4a9eff', marginTop: 8, fontFamily: "'JetBrains Mono', monospace" }}>
+            {d.linkLabel} ↗
+          </div>
+        )}
       </div>
     ),
   },
@@ -73,12 +103,19 @@ const SECTIONS = [
       { key: 'tech', label: 'Tech Stack (one per line)', type: 'array' },
       { key: 'liveUrl', label: 'Live Demo URL', type: 'text' },
       { key: 'githubUrl', label: 'GitHub URL', type: 'text' },
+      { key: 'linkLabel', label: 'Link Label (optional)', type: 'text' },
+      { key: 'linkUrl', label: 'Link URL (optional)', type: 'text' },
     ],
     preview: (d) => (
       <div style={{ padding: '16px 20px', background: '#161616', borderRadius: 8, border: '1px solid #2e2e2e' }}>
         <div style={{ fontSize: 16, fontWeight: 700, color: '#f0f0f0', marginBottom: 4, fontFamily: "'Bebas Neue', sans-serif", letterSpacing: 1 }}>{(d.title || '').toUpperCase()}</div>
         <div style={{ fontSize: 11, color: '#888', marginBottom: 8, fontFamily: "'JetBrains Mono', monospace" }}>{(d.tech || []).join(' · ')}</div>
         <div style={{ fontSize: 13, color: '#aaa', lineHeight: 1.6 }}>{(d.description || '').slice(0, 150)}</div>
+        {d.linkUrl && d.linkLabel && (
+          <div style={{ fontSize: 12, color: '#4a9eff', marginTop: 8, fontFamily: "'JetBrains Mono', monospace" }}>
+            {d.linkLabel} ↗
+          </div>
+        )}
       </div>
     ),
   },
@@ -88,6 +125,8 @@ const SECTIONS = [
     fields: [
       { key: 'label', label: 'Image Label / Caption', type: 'text' },
       { key: 'image', label: 'Image Path (e.g. /images/two.jpg)', type: 'text' },
+      { key: 'linkLabel', label: 'Link Label (optional)', type: 'text' },
+      { key: 'linkUrl', label: 'Link URL (optional)', type: 'text' },
     ],
     preview: (d) => (
       <div style={{ padding: '12px 16px', background: '#161616', borderRadius: 8, border: '1px solid #2e2e2e', display: 'flex', alignItems: 'center', gap: 12 }}>
@@ -98,6 +137,11 @@ const SECTIONS = [
           <div style={{ fontSize: 13, color: '#f0f0f0' }}>{d.label}</div>
           <div style={{ fontSize: 11, color: '#666', fontFamily: "'JetBrains Mono', monospace" }}>{d.image}</div>
         </div>
+        {d.linkUrl && d.linkLabel && (
+          <div style={{ fontSize: 12, color: '#4a9eff', marginTop: 8, fontFamily: "'JetBrains Mono', monospace" }}>
+            {d.linkLabel} ↗
+          </div>
+        )}
       </div>
     ),
   },
@@ -109,6 +153,8 @@ const SECTIONS = [
       { key: 'title', label: 'Event Title', type: 'text' },
       { key: 'org', label: 'Organization', type: 'text' },
       { key: 'role', label: 'Your Role', type: 'text' },
+      { key: 'linkLabel', label: 'Link Label (optional)', type: 'text' },
+      { key: 'linkUrl', label: 'Link URL (optional)', type: 'text' },
     ],
     preview: (d) => (
       <div style={{ padding: '14px 18px', background: '#161616', borderRadius: 8, border: '1px solid #2e2e2e', display: 'flex', gap: 14, alignItems: 'flex-start' }}>
@@ -117,6 +163,11 @@ const SECTIONS = [
           <div style={{ fontSize: 14, fontWeight: 600, color: '#f0f0f0' }}>{d.title}</div>
           <div style={{ fontSize: 12, color: '#888', marginTop: 2 }}>{d.org}</div>
           <div style={{ fontSize: 12, color: '#666', marginTop: 4 }}>{d.role}</div>
+          {d.linkUrl && d.linkLabel && (
+            <div style={{ fontSize: 12, color: '#4a9eff', marginTop: 8, fontFamily: "'JetBrains Mono', monospace" }}>
+              {d.linkLabel} ↗
+            </div>
+          )}
         </div>
       </div>
     ),
@@ -129,6 +180,8 @@ const SECTIONS = [
       { key: 'role', label: 'Your Role', type: 'text' },
       { key: 'subtitle', label: 'Subtitle (optional)', type: 'text' },
       { key: 'description', label: 'Description', type: 'textarea', rows: 3 },
+      { key: 'linkLabel', label: 'Link Label (optional)', type: 'text' },
+      { key: 'linkUrl', label: 'Link URL (optional)', type: 'text' },
     ],
     preview: (d) => (
       <div style={{ padding: '14px 18px', background: '#161616', borderRadius: 8, border: '1px solid #2e2e2e' }}>
@@ -136,6 +189,11 @@ const SECTIONS = [
         <div style={{ fontSize: 15, fontWeight: 700, color: '#f0f0f0', fontFamily: "'Bebas Neue', sans-serif", letterSpacing: 1 }}>{(d.title || '').toUpperCase()}</div>
         {d.subtitle && <div style={{ fontSize: 12, color: '#888', marginTop: 2 }}>{d.subtitle}</div>}
         <div style={{ fontSize: 13, color: '#aaa', lineHeight: 1.6, marginTop: 6 }}>{(d.description || '').slice(0, 120)}</div>
+        {d.linkUrl && d.linkLabel && (
+          <div style={{ fontSize: 12, color: '#4a9eff', marginTop: 8, fontFamily: "'JetBrains Mono', monospace" }}>
+            {d.linkLabel} ↗
+          </div>
+        )}
       </div>
     ),
   },
@@ -147,6 +205,8 @@ const SECTIONS = [
       { key: 'title', label: 'Institution', type: 'text' },
       { key: 'subtitle', label: 'Degree / Program', type: 'text' },
       { key: 'description', label: 'Description', type: 'textarea', rows: 3 },
+      { key: 'linkLabel', label: 'Link Label (optional)', type: 'text' },
+      { key: 'linkUrl', label: 'Link URL (optional)', type: 'text' },
     ],
     preview: (d) => (
       <div style={{ padding: '14px 18px', background: '#161616', borderRadius: 8, border: '1px solid #2e2e2e' }}>
@@ -154,6 +214,11 @@ const SECTIONS = [
         <div style={{ fontSize: 15, fontWeight: 700, color: '#f0f0f0', fontFamily: "'Bebas Neue', sans-serif", letterSpacing: 1 }}>{d.title}</div>
         <div style={{ fontSize: 12, color: '#888', marginTop: 2 }}>{d.subtitle}</div>
         <div style={{ fontSize: 13, color: '#aaa', lineHeight: 1.6, marginTop: 6 }}>{(d.description || '').slice(0, 120)}</div>
+        {d.linkUrl && d.linkLabel && (
+          <div style={{ fontSize: 12, color: '#4a9eff', marginTop: 8, fontFamily: "'JetBrains Mono', monospace" }}>
+            {d.linkLabel} ↗
+          </div>
+        )}
       </div>
     ),
   },

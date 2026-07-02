@@ -13,6 +13,11 @@ export default function Experience({ experience = [] }) {
               <h3>{exp.title.toUpperCase()}</h3>
               <h4>{exp.subtitle || exp.role}</h4>
               <p>{exp.description}</p>
+              {exp.linkUrl && exp.linkLabel && (
+                <a href={exp.linkUrl} target="_blank" rel="noreferrer" style={{ color: '#c7c7c7', textDecoration: 'underline', fontSize: 13, marginTop: 8, display: 'inline-block' }}>
+                  {exp.linkLabel} ↗
+                </a>
+              )}
             </div>
           ))}
         </div>

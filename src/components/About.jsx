@@ -7,7 +7,14 @@ export default function About({ paragraphs = [], stats = [], highlights = [] }) 
             <div className="section-label">01 — Introduction</div>
             <div className="section-title">About <em>Me</em></div>
             {paragraphs.map((item) => (
-              <p key={item.id}>{item.text}</p>
+              <p key={item.id}>
+                {item.text}
+                {item.linkUrl && item.linkLabel && (
+                  <a href={item.linkUrl} target="_blank" rel="noreferrer" style={{ color: '#c7c7c7', textDecoration: 'underline', fontSize: 13 }}>
+                    {item.linkLabel} ↗
+                  </a>
+                )}
+              </p>
             ))}
             <div className="about-stats reveal reveal-delay-2">
               {stats.map((item) => (
