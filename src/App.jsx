@@ -12,9 +12,10 @@ import CTABanner from './components/CTABanner';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Admin from './pages/Admin';
-import { defaultPortfolioContent as content } from './data/defaultPortfolioContent';
+import { usePortfolioContent } from './hooks/usePortfolioContent';
 
 function HomePage() {
+  const { content } = usePortfolioContent();
   useEffect(() => {
     const revealEls = document.querySelectorAll('.reveal');
     const revealObserver = new IntersectionObserver((entries) => {

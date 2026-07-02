@@ -571,6 +571,7 @@ export default function Admin() {
           {/* Active section */}
           {SECTIONS.filter(s => s.key === activeSection).map(section => {
             const sectionEntries = entries[section.key] || [];
+            const isCreatingNew = editing && editing.startsWith('new-') && editForm.section === section.key;
             return (
               <div key={section.key} className="admin-section">
                 <div className="admin-section-header">
@@ -586,7 +587,43 @@ export default function Admin() {
                   </button>
                 </div>
 
-                {sectionEntries.length === 0 ? (
+                {isCreatingNew && (
+                  <div className="admin-entry editing" style={{ marginBottom: 24 }}>
+                    <div>
+                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
+                        <span style={{ fontSize: 12, color: '#888', fontFamily: "'JetBrains Mono', monospace" }}>
+                          Creating new entry
+                        </span>
+                      </div>
+
+                      {section.fields.map(field => (
+                        <FieldRenderer
+                          key={field.key}
+                          field={field}
+                          value={editForm.data[field.key]}
+                          onChange={updateField}
+                          sectionKey={section.key}
+                        />
+                      ))}
+
+                      <div className="admin-preview-wrap">
+                        <div className="admin-preview-label">Live Preview</div>
+                        <div className="admin-preview-box">
+                          {section.preview(editForm.data)}
+                        </div>
+                      </div>
+
+                      <div className="admin-entry-actions" style={{ marginTop: 16 }}>
+                        <button onClick={saveNewEntry} disabled={saving[editing]} className="admin-btn admin-btn-primary">
+                          {saving[editing] ? 'Creating...' : 'Create Entry'}
+                        </button>
+                        <button onClick={cancelEdit} className="admin-btn">Cancel</button>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {!isCreatingNew && sectionEntries.length === 0 ? (
                   <div className="admin-empty">
                     <p>No entries yet. Click "+ New Entry" to create one.</p>
                   </div>
@@ -598,7 +635,7 @@ export default function Admin() {
                           <div>
                             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
                               <span style={{ fontSize: 12, color: '#888', fontFamily: "'JetBrains Mono', monospace" }}>
-                                {editing.startsWith('new-') ? 'Creating new entry' : `Editing #${entry.id.slice(0, 8)}`}
+                                Editing #{entry.id.slice(0, 8)}
                               </span>
                               <span style={{ fontSize: 11, color: '#666' }}>sort: {entry.sort_order}</span>
                             </div>
@@ -613,7 +650,6 @@ export default function Admin() {
                               />
                             ))}
 
-                            {/* Live preview */}
                             <div className="admin-preview-wrap">
                               <div className="admin-preview-label">Live Preview</div>
                               <div className="admin-preview-box">
@@ -622,15 +658,9 @@ export default function Admin() {
                             </div>
 
                             <div className="admin-entry-actions" style={{ marginTop: 16 }}>
-                              {editing.startsWith('new-') ? (
-                                <button onClick={saveNewEntry} disabled={saving[editing]} className="admin-btn admin-btn-primary">
-                                  {saving[editing] ? 'Creating...' : 'Create Entry'}
-                                </button>
-                              ) : (
-                                <button onClick={() => saveEdit(entry)} disabled={saving[entry.id]} className="admin-btn admin-btn-primary">
-                                  {saving[entry.id] ? 'Saving...' : 'Save Changes'}
-                                </button>
-                              )}
+                              <button onClick={() => saveEdit(entry)} disabled={saving[entry.id]} className="admin-btn admin-btn-primary">
+                                {saving[entry.id] ? 'Saving...' : 'Save Changes'}
+                              </button>
                               <button onClick={cancelEdit} className="admin-btn">Cancel</button>
                             </div>
                           </div>
