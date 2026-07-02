@@ -173,6 +173,36 @@ const SECTIONS = [
     ),
   },
   {
+    key: 'products', label: 'Products',
+    icon: '💳', desc: 'Paid tools and digital products for sale',
+    fields: [
+      { key: 'title', label: 'Product Title', type: 'text' },
+      { key: 'description', label: 'Description', type: 'textarea', rows: 4 },
+      { key: 'price', label: 'Price (e.g. "$29")', type: 'text' },
+      { key: 'image', label: 'Image URL / Path', type: 'text' },
+      { key: 'features', label: 'Features (one per line)', type: 'array' },
+      { key: 'linkLabel', label: 'Link Label (e.g. "Buy Now")', type: 'text' },
+      { key: 'linkUrl', label: 'Link URL', type: 'text' },
+    ],
+    preview: (d) => (
+      <div style={{ padding: '16px 20px', background: '#161616', borderRadius: 8, border: '1px solid #2e2e2e' }}>
+        <div style={{ display: 'flex', gap: 12, alignItems: 'flex-start' }}>
+          {d.image && <div style={{ width: 60, height: 60, background: '#2e2e2e', borderRadius: 6, flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 10, color: '#666' }}>📷</div>}
+          <div style={{ flex: 1 }}>
+            <div style={{ display: 'flex', gap: 8, alignItems: 'center', marginBottom: 4 }}>
+              <span style={{ fontSize: 14, fontWeight: 700, color: '#f0f0f0', fontFamily: "'Bebas Neue', sans-serif", letterSpacing: 1 }}>{d.title}</span>
+              {d.price && <span style={{ fontSize: 10, padding: '2px 8px', background: '#1a3a1a', borderRadius: 4, color: '#6aff6a', fontFamily: "'JetBrains Mono', monospace" }}>{d.price}</span>}
+            </div>
+            <div style={{ fontSize: 12, color: '#888', lineHeight: 1.5, marginBottom: 6 }}>{(d.description || '').slice(0, 100)}</div>
+            {d.features && d.features.length > 0 && (
+              <div style={{ fontSize: 11, color: '#aaa', fontFamily: "'JetBrains Mono', monospace" }}>{d.features.slice(0, 3).join(' · ')}</div>
+            )}
+          </div>
+        </div>
+      </div>
+    ),
+  },
+  {
     key: 'experience', label: 'Experience',
     icon: '💼', desc: 'Career timeline entries',
     fields: [

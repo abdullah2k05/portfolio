@@ -17,7 +17,8 @@ create table if not exists public.content_entries (
       'photoSlides',
       'events',
       'experience',
-      'education'
+      'education',
+      'products'
     )
   )
 );

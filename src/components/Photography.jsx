@@ -30,7 +30,7 @@ export default function Photography({ slides = [], events = [] }) {
     <section id="photography">
       <div className="container">
         <div className="reveal">
-          <div className="section-label">04 — Media</div>
+          <div className="section-label">05 — Media</div>
           <div className="section-title">
             Photography <em>&amp; Events</em>
           </div>

@@ -5,6 +5,7 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Expertise from './components/Expertise';
 import Projects from './components/Projects';
+import Products from './components/Products';
 import Photography from './components/Photography';
 import Experience from './components/Experience';
 import Education from './components/Education';
@@ -142,6 +143,8 @@ function HomePage() {
         <Expertise skills={content.skills} />
         <div className="section-divider"></div>
         <Projects projects={content.projects} />
+        <div className="section-divider"></div>
+        <Products products={content.products} />
         <div className="section-divider"></div>
         <Photography slides={content.photoSlides} events={content.events} />
         <div className="section-divider"></div>
