@@ -120,6 +120,25 @@ function HomePage() {
         a.addEventListener('click', onAnchorClick);
         cleanupFns.push(() => a.removeEventListener('click', onAnchorClick));
       });
+
+      document.querySelectorAll('a[href^="/#"]').forEach((a) => {
+        const href = a.getAttribute('href') || '';
+        const hash = '#' + href.slice(2);
+        if (hash.length <= 1) return;
+
+        const onAnchorClick = (e) => {
+          const target = document.querySelector(hash);
+          if (!target) return;
+          if (window.location.pathname !== '/') return;
+          e.preventDefault();
+          const navLinksEl = document.getElementById('navLinks');
+          if (navLinksEl) navLinksEl.classList.remove('open');
+          target.scrollIntoView({ behavior: 'smooth' });
+        };
+
+        a.addEventListener('click', onAnchorClick);
+        cleanupFns.push(() => a.removeEventListener('click', onAnchorClick));
+      });
     }, 100);
 
     return () => {

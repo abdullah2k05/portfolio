@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
 
 const navLinks = [
-  { label: 'About', href: '#about' },
-  { label: 'Expertise', href: '#expertise' },
-  { label: 'Projects', href: '#projects' },
+  { label: 'About', href: '/#about' },
+  { label: 'Expertise', href: '/#expertise' },
+  { label: 'Projects', href: '/#projects' },
   { label: 'Products', href: '/products' },
-  { label: 'Media', href: '#photography' },
-  { label: 'Experience', href: '#experience' },
-  { label: 'Education', href: '#education' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Media', href: '/#photography' },
+  { label: 'Experience', href: '/#experience' },
+  { label: 'Education', href: '/#education' },
+  { label: 'Contact', href: '/#contact' },
 ];
 
 export default function Navbar() {
@@ -20,11 +20,7 @@ export default function Navbar() {
       <ul className={`nav-links${mobileOpen ? ' open' : ''}`} id="navLinks">
         {navLinks.map(link => (
           <li key={link.href}>
-            {link.href.startsWith('#') ? (
-              <a href={link.href} onClick={() => setMobileOpen(false)}>{link.label}</a>
-            ) : (
-              <a href={link.href} onClick={() => setMobileOpen(false)}>{link.label}</a>
-            )}
+            <a href={link.href} onClick={() => setMobileOpen(false)}>{link.label}</a>
           </li>
         ))}
       </ul>

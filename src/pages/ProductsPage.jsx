@@ -16,8 +16,8 @@ export default function ProductsPage() {
       <Navbar />
       <main>
         <Products products={content.products} />
-        <Footer />
       </main>
+      <Footer />
     </>
   );
 }
