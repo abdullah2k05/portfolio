@@ -22,7 +22,7 @@ export default function Products({ products = [] }) {
                   <div className="product-body">
                     <div className="product-meta">
                       <span className="product-num">Product {String(idx + 1).padStart(2, '0')}</span>
-                      {product.price && <span className="product-price">{product.price}</span>}
+                      {product.price && <span className="product-price">${product.price.startsWith('$') ? product.price.slice(1) : product.price}</span>}
                     </div>
                     <h3>{product.title}</h3>
                     <p>{(product.description || '').slice(0, 150)}</p>
@@ -34,7 +34,7 @@ export default function Products({ products = [] }) {
                       </div>
                     )}
                     {product.linkUrl && (
-                      <a href={product.linkUrl} className="project-link product-link" target="_blank" rel="noreferrer">
+                      <a href={product.linkUrl} className="btn-primary product-btn" target="_blank" rel="noreferrer">
                         {product.linkLabel || 'View Product'}
                       </a>
                     )}

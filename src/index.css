@@ -775,7 +775,15 @@ section { padding: 120px 0; }
   border: 1px solid rgba(200,200,200,0.15);
   background: rgba(200,200,200,0.03);
 }
-.product-link {
+.product-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(200,200,200,0.08);
+  pointer-events: none;
+}
+.product-btn {
+  align-self: flex-start;
   margin-top: auto;
 }
 
