@@ -175,28 +175,7 @@ export const defaultPortfolioContent = {
       githubUrl: "#",
     },
   ],
-  products: [
-    {
-      id: "product-1",
-      title: "SMM Rival — Growth Suite",
-      description: "All-in-one social media growth automation toolkit: scheduling, analytics, AI content generation, and multi-platform management for agencies and brands.",
-      price: "$49/mo",
-      image: "",
-      features: ["AI Content Generator", "Multi-Platform Scheduling", "Analytics Dashboard", "Team Collaboration"],
-      linkLabel: "Learn More",
-      linkUrl: "https://smmrival.com",
-    },
-    {
-      id: "product-2",
-      title: "RAG Financial Analysis Tool",
-      description: "A Retrieval-Augmented Generation system specialized in extracting insights from financial documents, PDFs, and reports using LLM-powered search.",
-      price: "$99",
-      image: "",
-      features: ["PDF Parsing", "Semantic Search", "Financial Entity Extraction", "Export Reports"],
-      linkLabel: "Get Access",
-      linkUrl: "https://money-lens.mabdullah.top",
-    },
-  ],
+  products: [],
   photoSlides: [
     {
       id: "slide-1",

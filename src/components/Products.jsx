@@ -19,26 +19,26 @@ export default function Products({ products = [] }) {
                     <img src={product.image} alt={product.title} />
                   </div>
                 )}
-                <div className="product-body">
-                  <div className="product-meta">
-                    <span className="product-num">Product {String(idx + 1).padStart(2, '0')}</span>
-                    {product.price && <span className="product-price">{product.price}</span>}
+                  <div className="product-body">
+                    <div className="product-meta">
+                      <span className="product-num">Product {String(idx + 1).padStart(2, '0')}</span>
+                      {product.price && <span className="product-price">{product.price}</span>}
+                    </div>
+                    <h3>{product.title}</h3>
+                    <p>{(product.description || '').slice(0, 150)}</p>
+                    {product.features && product.features.length > 0 && (
+                      <div className="product-tags">
+                        {product.features.map((f, i) => (
+                          <span key={i} className="product-tag">{f}</span>
+                        ))}
+                      </div>
+                    )}
+                    {product.linkUrl && (
+                      <a href={product.linkUrl} className="project-link product-link" target="_blank" rel="noreferrer">
+                        {product.linkLabel || 'View Product'}
+                      </a>
+                    )}
                   </div>
-                  <h3>{product.title}</h3>
-                  <p>{product.description}</p>
-                  {product.features && product.features.length > 0 && (
-                    <ul className="product-features">
-                      {product.features.map((f, i) => (
-                        <li key={i}>{f}</li>
-                      ))}
-                    </ul>
-                  )}
-                  {product.linkUrl && (
-                    <a href={product.linkUrl} className="btn-primary product-btn" target="_blank" rel="noreferrer">
-                      {product.linkLabel || 'View Product'}
-                    </a>
-                  )}
-                </div>
               </div>
             ))}
           </div>

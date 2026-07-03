@@ -695,10 +695,10 @@ section { padding: 120px 0; }
   gap: 24px;
 }
 .product-card {
+  padding: 32px;
   background: var(--black-3);
   border: 1px solid rgba(255,255,255,0.04);
-  border-radius: 8px;
-  overflow: hidden;
+  position: relative;
   display: flex; flex-direction: column;
   transition: transform 0.3s var(--ease-out), border-color 0.3s, box-shadow 0.3s;
 }
@@ -709,22 +709,19 @@ section { padding: 120px 0; }
 }
 .product-image {
   width: 100%;
-  height: 180px;
+  height: 120px;
   background: var(--gray-dark);
+  margin-bottom: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  border-radius: 6px;
 }
 .product-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-.product-body {
-  padding: 24px;
-  display: flex; flex-direction: column;
-  flex: 1;
 }
 .product-meta {
   display: flex;
@@ -740,20 +737,20 @@ section { padding: 120px 0; }
 }
 .product-price {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 10px;
   letter-spacing: 1px;
   color: #6aff6a;
-  padding: 3px 10px;
+  padding: 2px 8px;
   background: rgba(106,255,106,0.08);
   border: 1px solid rgba(106,255,106,0.15);
   border-radius: 4px;
 }
 .product-card h3 {
   font-family: var(--font-display);
-  font-size: 20px;
+  font-size: 18px;
   letter-spacing: 1px;
   color: var(--white);
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 .product-card p {
   font-size: 13px;
@@ -762,30 +759,23 @@ section { padding: 120px 0; }
   margin-bottom: 16px;
   flex-grow: 1;
 }
-.product-features {
-  list-style: none;
+.product-tags {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   gap: 6px;
   margin-bottom: 20px;
 }
-.product-features li {
-  font-size: 12px;
-  color: var(--gray-light);
+.product-tag {
+  padding: 4px 10px;
   font-family: var(--font-mono);
-  letter-spacing: 0.5px;
-  padding-left: 16px;
-  position: relative;
+  font-size: 9px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--silver);
+  border: 1px solid rgba(200,200,200,0.15);
+  background: rgba(200,200,200,0.03);
 }
-.product-features li::before {
-  content: '›';
-  position: absolute;
-  left: 0;
-  color: #6aff6a;
-  font-weight: 700;
-}
-.product-btn {
-  align-self: flex-start;
+.product-link {
   margin-top: auto;
 }
 
