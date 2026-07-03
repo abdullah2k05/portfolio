@@ -12,12 +12,12 @@ export default function ProductsPage() {
   }, []);
 
   return (
-    <>
+    <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
       <Navbar />
-      <main>
+      <main style={{ flex: 1 }}>
         <Products products={content.products} />
       </main>
       <Footer />
-    </>
+    </div>
   );
 }
