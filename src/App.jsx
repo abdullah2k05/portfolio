@@ -13,6 +13,7 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Admin from './pages/Admin';
 import ProductsPage from './pages/ProductsPage';
+import PrivacyPolicy from './pages/PrivacyPolicy';
 import { usePortfolioContent } from './hooks/usePortfolioContent';
 
 function HomePage() {
@@ -185,6 +186,7 @@ export default function App() {
       <Route path="/products" element={<ProductsPage />} />
       <Route path="/ribal" element={<Admin />} />
       <Route path="/ribal/*" element={<Admin />} />
+      <Route path="/privacy-policy" element={<PrivacyPolicy />} />
     </Routes>
   );
 }

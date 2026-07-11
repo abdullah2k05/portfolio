@@ -9,6 +9,7 @@ export default function Footer() {
         <a href="https://smmrival.com" target="_blank" rel="noreferrer">SMM Rival</a>
         <a href="https://github.com/Abdullah2k05" target="_blank" rel="noreferrer">GitHub</a>
         <a href="https://linkedin.com/in/abdullah2k05" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a href="/privacy-policy">Privacy Policy</a>
       </div>
     </footer>
   );

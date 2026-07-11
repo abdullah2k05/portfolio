@@ -2,19 +2,25 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://mabdullah.top</loc>
-    <lastmod>2026-07-03T10:24:50.452Z</lastmod>
+    <lastmod>2026-07-11T18:30:41.639Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://mabdullah.top/Admin</loc>
-    <lastmod>2026-07-03T10:24:50.453Z</lastmod>
+    <lastmod>2026-07-11T18:30:41.639Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mabdullah.top/PrivacyPolicy</loc>
+    <lastmod>2026-07-11T18:30:41.639Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://mabdullah.top/ProductsPage</loc>
-    <lastmod>2026-07-03T10:24:50.453Z</lastmod>
+    <lastmod>2026-07-11T18:30:41.639Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
