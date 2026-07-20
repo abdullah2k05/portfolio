@@ -18,74 +18,16 @@ const SITE_URL =
   normalizeBaseUrl(process.env.VERCEL_URL) ||
   "https://mabdullah.top";
 const OUTPUT_PATH = path.join(rootDir, "public", "sitemap.xml");
-const PAGES_DIR = path.join(rootDir, "src", "pages");
 
-const staticRoutes = [{ path: "/", changefreq: "weekly", priority: 1.0 }];
-
-const ignoredFiles = new Set(["_app.jsx", "_document.jsx", "404.jsx"]);
-
-const pageExtensions = new Set([".js", ".jsx", ".ts", ".tsx"]);
-
-const toRoutePath = (filePath) => {
-  const relative = path.relative(PAGES_DIR, filePath);
-  const ext = path.extname(relative);
-  if (!pageExtensions.has(ext)) return null;
-
-  const normalized = relative.replace(/\\/g, "/");
-  const basename = path.basename(normalized);
-  if (ignoredFiles.has(basename)) return null;
-
-  if (/\[(?:\.\.\.)?[^\]]+\]/.test(normalized)) return null;
-
-  let route = normalized.replace(ext, "");
-  if (route.endsWith("/index")) route = route.slice(0, -6);
-  if (!route.startsWith("/")) route = `/${route}`;
-  if (route === "") route = "/";
-
-  return route;
-};
-
-const walk = async (dirPath) => {
-  const entries = await fs.readdir(dirPath, { withFileTypes: true });
-  const results = [];
-
-  for (const entry of entries) {
-    const fullPath = path.join(dirPath, entry.name);
-
-    if (entry.isDirectory()) {
-      results.push(...(await walk(fullPath)));
-      continue;
-    }
-
-    results.push(fullPath);
-  }
-
-  return results;
-};
-
-const getPageRoutes = async () => {
-  try {
-    await fs.access(PAGES_DIR);
-  } catch {
-    return [];
-  }
-
-  const files = await walk(PAGES_DIR);
-  return files
-    .map(toRoutePath)
-    .filter(Boolean)
-    .map((route) => ({
-      path: route,
-      changefreq: "weekly",
-      priority: route === "/" ? 1.0 : 0.7,
-    }));
-};
+const routes = [
+  { path: "/", changefreq: "weekly", priority: 1.0 },
+  { path: "/products", changefreq: "weekly", priority: 0.8 },
+  { path: "/privacy-policy", changefreq: "monthly", priority: 0.5 },
+  { path: "/terms", changefreq: "monthly", priority: 0.5 },
+];
 
 const buildUrlTag = ({ path: routePath, changefreq, priority }) => {
-  const normalizedPath = routePath.startsWith("/")
-    ? routePath
-    : `/${routePath}`;
-  const loc = `${SITE_URL}${normalizedPath === "/" ? "" : normalizedPath}`;
+  const loc = `${SITE_URL}${routePath === "/" ? "" : routePath}`;
   const lastmod = new Date().toISOString();
 
   return [
@@ -99,13 +41,7 @@ const buildUrlTag = ({ path: routePath, changefreq, priority }) => {
 };
 
 const generateSitemapXml = (routes) => {
-  const unique = new Map();
-
-  for (const route of routes) {
-    unique.set(route.path, route);
-  }
-
-  const urlset = [...unique.values()]
+  const urlset = routes
     .sort((a, b) => a.path.localeCompare(b.path))
     .map(buildUrlTag)
     .join("\n");
@@ -120,13 +56,10 @@ const generateSitemapXml = (routes) => {
 };
 
 const run = async () => {
-  const pageRoutes = await getPageRoutes();
-  const allRoutes = [...staticRoutes, ...pageRoutes];
-  const xml = generateSitemapXml(allRoutes);
-
+  const xml = generateSitemapXml(routes);
   await fs.writeFile(OUTPUT_PATH, xml, "utf8");
   console.log(`Sitemap generated: ${OUTPUT_PATH}`);
-  console.log(`Total URLs: ${allRoutes.length}`);
+  console.log(`Total URLs: ${routes.length}`);
 };
 
 run().catch((error) => {

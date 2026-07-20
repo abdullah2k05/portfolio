@@ -14,6 +14,7 @@ import Footer from './components/Footer';
 import Admin from './pages/Admin';
 import ProductsPage from './pages/ProductsPage';
 import PrivacyPolicy from './pages/PrivacyPolicy';
+import Terms from './pages/Terms';
 import { usePortfolioContent } from './hooks/usePortfolioContent';
 
 function HomePage() {
@@ -187,6 +188,7 @@ export default function App() {
       <Route path="/ribal" element={<Admin />} />
       <Route path="/ribal/*" element={<Admin />} />
       <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+      <Route path="/terms" element={<Terms />} />
     </Routes>
   );
 }

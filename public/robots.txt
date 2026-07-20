@@ -1,5 +1,12 @@
+User-agent: Googlebot
+Allow: /
+
+User-agent: AdsBot-Google
+Allow: /
+
 User-agent: *
 Allow: /
+Disallow: /ribal
+Disallow: /ribal/*
+
 Sitemap: https://mabdullah.top/sitemap.xml
-# If you want to disallow specific paths, add lines like:
-# Disallow: /admin/
