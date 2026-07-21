@@ -2,10 +2,22 @@ import { useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Products from '../components/Products';
 import Footer from '../components/Footer';
+import useSEO from '../hooks/useSEO';
 import { usePortfolioContent } from '../hooks/usePortfolioContent';
 
 export default function ProductsPage() {
   const { content } = usePortfolioContent();
+
+  useSEO({
+    title: 'Products — Digital Tools & Solutions | Muhammad Abdullah',
+    description:
+      'Browse digital products, tools, and solutions built by Muhammad Abdullah — AI automation tools, paid utilities, and developer resources.',
+    keywords:
+      'digital products, AI tools, developer tools, automation, paid utilities, software products',
+    ogTitle: 'Products & Digital Tools | Muhammad Abdullah',
+    ogDescription:
+      'Browse AI automation tools, paid utilities, and developer solutions.',
+  });
 
   useEffect(() => {
     window.scrollTo(0, 0);

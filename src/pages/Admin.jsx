@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { supabase, isSupabaseConfigured } from '../lib/supabaseClient';
 import { defaultPortfolioContent } from '../data/defaultPortfolioContent';
+import useSEO from '../hooks/useSEO';
 
 /* ───── Section config ───── */
 const SECTIONS = [
@@ -377,6 +378,11 @@ function FieldRenderer({ field, value, onChange, sectionKey }) {
 
 /* ───── Main Admin ───── */
 export default function Admin() {
+  useSEO({
+    title: 'Admin Portal | Muhammad Abdullah',
+    robots: 'noindex, nofollow',
+  });
+
   const [session, setSession] = useState(null);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

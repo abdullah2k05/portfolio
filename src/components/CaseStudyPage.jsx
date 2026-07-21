@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { caseStudies } from '../data/caseStudies';
+import useSEO from '../hooks/useSEO';
 
 function ListSection({ title, items }) {
   if (!items || items.length === 0) return null;
@@ -19,16 +20,38 @@ function ListSection({ title, items }) {
 export default function CaseStudyPage({ slug }) {
   const cs = caseStudies.find((c) => c.slug === slug);
 
-  useEffect(() => {
-    if (cs) {
-      document.title = cs.seo.title;
-      document.querySelector('meta[name="description"]')?.setAttribute('content', cs.seo.description);
-      document.querySelector('meta[name="keywords"]')?.setAttribute('content', cs.seo.keywords);
-    }
-    return () => {
-      document.title = 'M Abdullah — Full-Stack Developer';
-    };
-  }, [cs]);
+  useSEO(
+    cs
+      ? {
+          title: cs.seo.title,
+          description: cs.seo.description,
+          keywords: cs.seo.keywords,
+          ogTitle: `${cs.title} — Case Study | Muhammad Abdullah`,
+          ogDescription: cs.seo.description,
+          ogType: 'article',
+          twitterTitle: `${cs.title} — Case Study`,
+          twitterDescription: cs.seo.description,
+          structuredData: {
+            '@context': 'https://schema.org',
+            '@type': 'TechArticle',
+            headline: cs.title,
+            description: cs.seo.description,
+            author: {
+              '@type': 'Person',
+              name: 'Muhammad Abdullah',
+              url: 'https://mabdullah.top',
+            },
+            datePublished: cs.date,
+            proficiencyLevel: 'Advanced',
+            about: cs.subtitle,
+            keywords: cs.seo.keywords,
+          },
+        }
+      : {
+          title: 'Case Study Not Found | Muhammad Abdullah',
+          robots: 'noindex',
+        }
+  );
 
   useEffect(() => {
     window.scrollTo(0, 0);

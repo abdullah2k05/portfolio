@@ -1,8 +1,18 @@
 import { useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import useSEO from '../hooks/useSEO';
 
 export default function PrivacyPolicy() {
+  useSEO({
+    title: 'Privacy Policy | Muhammad Abdullah',
+    description:
+      'Privacy Policy for Muhammad Abdullah portfolio website. Learn how your data is collected, used, and protected when visiting mabdullah.top.',
+    keywords:
+      'privacy policy, data protection, cookie policy, GDPR, privacy',
+    robots: 'index, follow',
+  });
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);

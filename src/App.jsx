@@ -5,7 +5,6 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Expertise from './components/Expertise';
 import Projects from './components/Projects';
-import ArticlesSection from './components/ArticlesSection';
 import Photography from './components/Photography';
 import Experience from './components/Experience';
 import Education from './components/Education';
@@ -16,11 +15,42 @@ import Admin from './pages/Admin';
 import ProductsPage from './pages/ProductsPage';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import Terms from './pages/Terms';
+import ArticlesPage from './pages/ArticlesPage';
 import CaseStudyWrapper from './pages/CaseStudyWrapper';
+import useSEO from './hooks/useSEO';
 import { usePortfolioContent } from './hooks/usePortfolioContent';
 
 function HomePage() {
   const { content } = usePortfolioContent();
+
+  useSEO({
+    structuredData: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'Person',
+        name: 'Muhammad Abdullah',
+        url: 'https://mabdullah.top',
+        jobTitle: 'AI Automation Engineer & Data Science Specialist',
+        sameAs: [
+          'https://github.com/Abdullah2k05',
+          'https://linkedin.com/in/abdullah2k05',
+        ],
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'WebSite',
+        name: 'Muhammad Abdullah Portfolio',
+        url: 'https://mabdullah.top',
+        description:
+          'Portfolio showcasing AI workflows, backend development, and data science projects.',
+        potentialAction: {
+          '@type': 'SearchAction',
+          target: 'https://mabdullah.top/?q={search_term_string}',
+          'query-input': 'required name=search_term_string',
+        },
+      },
+    ],
+  });
   useEffect(() => {
     const revealEls = document.querySelectorAll('.reveal');
     if (revealEls.length === 0) return;
@@ -167,8 +197,6 @@ function HomePage() {
         <div className="section-divider"></div>
         <Projects projects={content.projects} />
         <div className="section-divider"></div>
-        <ArticlesSection />
-        <div className="section-divider"></div>
         <Photography slides={content.photoSlides} events={content.events} />
         <div className="section-divider"></div>
         <Experience experience={content.experience} />
@@ -193,6 +221,7 @@ export default function App() {
       <Route path="/ribal/*" element={<Admin />} />
       <Route path="/privacy-policy" element={<PrivacyPolicy />} />
       <Route path="/terms" element={<Terms />} />
+      <Route path="/articles" element={<ArticlesPage />} />
       <Route path="/:slug" element={<CaseStudyWrapper />} />
     </Routes>
   );

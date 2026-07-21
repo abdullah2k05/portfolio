@@ -34,6 +34,7 @@ const caseStudySlugs = [
 
 const routes = [
   { path: "/", changefreq: "weekly", priority: 1.0 },
+  { path: "/articles", changefreq: "weekly", priority: 0.9 },
   { path: "/products", changefreq: "weekly", priority: 0.8 },
   { path: "/privacy-policy", changefreq: "monthly", priority: 0.5 },
   { path: "/terms", changefreq: "monthly", priority: 0.5 },

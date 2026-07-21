@@ -1,8 +1,18 @@
 import { useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import useSEO from '../hooks/useSEO';
 
 export default function Terms() {
+  useSEO({
+    title: 'Terms & Conditions | Muhammad Abdullah',
+    description:
+      'Terms and Conditions for using Muhammad Abdullah portfolio website. Understand the rules, disclaimers, and limitations of liability.',
+    keywords:
+      'terms and conditions, terms of service, legal, disclaimer',
+    robots: 'index, follow',
+  });
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
