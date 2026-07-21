@@ -5,6 +5,7 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Expertise from './components/Expertise';
 import Projects from './components/Projects';
+import ArticlesSection from './components/ArticlesSection';
 import Photography from './components/Photography';
 import Experience from './components/Experience';
 import Education from './components/Education';
@@ -15,6 +16,7 @@ import Admin from './pages/Admin';
 import ProductsPage from './pages/ProductsPage';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import Terms from './pages/Terms';
+import CaseStudyWrapper from './pages/CaseStudyWrapper';
 import { usePortfolioContent } from './hooks/usePortfolioContent';
 
 function HomePage() {
@@ -165,6 +167,8 @@ function HomePage() {
         <div className="section-divider"></div>
         <Projects projects={content.projects} />
         <div className="section-divider"></div>
+        <ArticlesSection />
+        <div className="section-divider"></div>
         <Photography slides={content.photoSlides} events={content.events} />
         <div className="section-divider"></div>
         <Experience experience={content.experience} />
@@ -189,6 +193,7 @@ export default function App() {
       <Route path="/ribal/*" element={<Admin />} />
       <Route path="/privacy-policy" element={<PrivacyPolicy />} />
       <Route path="/terms" element={<Terms />} />
+      <Route path="/:slug" element={<CaseStudyWrapper />} />
     </Routes>
   );
 }

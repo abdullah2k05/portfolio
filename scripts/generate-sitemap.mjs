@@ -19,11 +19,29 @@ const SITE_URL =
   "https://mabdullah.top";
 const OUTPUT_PATH = path.join(rootDir, "public", "sitemap.xml");
 
+const caseStudySlugs = [
+  "github-reader",
+  "period-tracker",
+  "invoice-generator",
+  "expense-tracker",
+  "finance-analyzer",
+  "ai-live-chat",
+  "parcel-tracker",
+  "focus-app",
+  "rehman-royal-store",
+  "cooking-oil-store",
+];
+
 const routes = [
   { path: "/", changefreq: "weekly", priority: 1.0 },
   { path: "/products", changefreq: "weekly", priority: 0.8 },
   { path: "/privacy-policy", changefreq: "monthly", priority: 0.5 },
   { path: "/terms", changefreq: "monthly", priority: 0.5 },
+  ...caseStudySlugs.map((slug) => ({
+    path: `/${slug}`,
+    changefreq: "monthly",
+    priority: 0.7,
+  })),
 ];
 
 const buildUrlTag = ({ path: routePath, changefreq, priority }) => {
