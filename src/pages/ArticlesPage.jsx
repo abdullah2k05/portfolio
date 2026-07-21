@@ -45,6 +45,13 @@ export default function ArticlesPage() {
                   key={cs.slug}
                   to={`/${cs.slug}`}
                   className={`article-card reveal revealed reveal-delay-${(idx % 3) + 1}`}
+                  onMouseMove={(e) => {
+                    const rect = e.currentTarget.getBoundingClientRect();
+                    const x = ((e.clientX - rect.left) / rect.width * 100).toFixed(1);
+                    const y = ((e.clientY - rect.top) / rect.height * 100).toFixed(1);
+                    e.currentTarget.style.setProperty('--mx', `${x}%`);
+                    e.currentTarget.style.setProperty('--my', `${y}%`);
+                  }}
                 >
                   <div className="article-card-meta">
                     <span className="article-card-num">{cs.projectNumber}</span>

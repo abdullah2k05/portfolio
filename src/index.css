@@ -1923,43 +1923,56 @@ textarea.admin-input {
 }
 
 /* Articles Section */
-#articles-page { background: var(--black); }
-#articles { background: var(--black); }
+#articles-page {
+  background: var(--bg-base);
+}
+#articles {
+  background: var(--bg-base);
+}
 
 .articles-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  gap: 20px;
 }
 
 .article-card {
   padding: 28px;
-  background: var(--black-2);
-  border: 1px solid rgba(255,255,255,0.04);
-  border-left: 2px solid rgba(200,200,200,0.08);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
   display: flex;
   flex-direction: column;
   text-decoration: none;
-  transition: transform 0.3s var(--ease-out), border-color 0.3s, box-shadow 0.3s,
-    border-left-color 0.3s;
   position: relative;
+  overflow: hidden;
+  transition: transform 0.3s var(--ease-out), border-color 0.3s, box-shadow 0.3s;
 }
 
 .article-card::before {
   content: '';
   position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 1px;
-  background: linear-gradient(to right, transparent, rgba(200,200,200,0.06), transparent);
+  inset: 0;
+  background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), var(--accent-glow) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s;
   pointer-events: none;
+  z-index: 0;
+}
+
+.article-card:hover::before {
+  opacity: 1;
+}
+
+.article-card > * {
+  position: relative;
+  z-index: 1;
 }
 
 .article-card:hover {
   transform: translateY(-4px);
-  border-color: rgba(200,200,200,0.12);
-  border-left-color: var(--accent);
-  box-shadow: 0 12px 40px rgba(0,0,0,0.5),
-    -4px 0 24px rgba(200,200,200,0.04);
+  border-color: var(--accent-dim);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.4), 0 0 24px var(--accent-glow);
 }
 
 .article-card-meta {
@@ -1973,27 +1986,27 @@ textarea.admin-input {
   font-family: var(--font-mono);
   font-size: 10px;
   letter-spacing: 2px;
-  color: var(--gray-light);
+  color: var(--accent);
 }
 
 .article-card-date {
   font-family: var(--font-mono);
   font-size: 10px;
-  color: var(--gray);
+  color: var(--text-muted);
 }
 
 .article-card h3 {
   font-family: var(--font-display);
   font-size: 20px;
   letter-spacing: 1px;
-  color: var(--white-pure);
+  color: var(--text-primary);
   margin-bottom: 8px;
   line-height: 1.1;
 }
 
 .article-card p {
   font-size: 13px;
-  color: var(--gray-light);
+  color: var(--text-secondary);
   line-height: 1.65;
   margin-bottom: 20px;
 }
@@ -2003,6 +2016,10 @@ textarea.admin-input {
   flex-wrap: wrap;
   gap: 6px;
   margin-bottom: 20px;
+}
+
+.article-card-tech .tech-badge {
+  background: rgba(255,255,255,0.03);
 }
 
 .article-card-highlights {
@@ -2018,7 +2035,7 @@ textarea.admin-input {
 .article-card-highlights li {
   font-size: 12px;
   line-height: 1.55;
-  color: var(--silver);
+  color: var(--text-secondary);
   padding-left: 16px;
   position: relative;
 }
@@ -2030,9 +2047,9 @@ textarea.admin-input {
   top: 7px;
   width: 5px;
   height: 5px;
-  background: var(--gray);
+  background: var(--accent);
   border-radius: 50%;
-  opacity: 0.5;
+  opacity: 0.4;
 }
 
 .article-card-cta {
@@ -2040,17 +2057,17 @@ textarea.admin-input {
   font-size: 10px;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  color: var(--silver);
+  color: var(--text-muted);
   display: flex;
   align-items: center;
   gap: 8px;
   transition: color 0.2s, gap 0.3s var(--ease-out);
   padding-top: 16px;
-  border-top: 1px solid rgba(255,255,255,0.04);
+  border-top: 1px solid var(--border-subtle);
 }
 
 .article-card:hover .article-card-cta {
-  color: var(--white);
+  color: var(--accent);
   gap: 12px;
 }
 
