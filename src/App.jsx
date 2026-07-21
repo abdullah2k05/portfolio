@@ -11,6 +11,9 @@ import Education from './components/Education';
 import CTABanner from './components/CTABanner';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import ArticlesPage from './pages/ArticlesPage';
+import CaseStudyWrapper from './pages/CaseStudyWrapper';
+import NotFoundPage from './pages/NotFoundPage';
 import useSEO from './hooks/useSEO';
 import { usePortfolioContent } from './hooks/usePortfolioContent';
 
@@ -18,26 +21,6 @@ const Admin = lazy(() => import('./pages/Admin'));
 const ProductsPage = lazy(() => import('./pages/ProductsPage'));
 const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
 const Terms = lazy(() => import('./pages/Terms'));
-const ArticlesPage = lazy(() => import('./pages/ArticlesPage'));
-const CaseStudyWrapper = lazy(() => import('./pages/CaseStudyWrapper'));
-const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
-
-function PageLoader() {
-  return (
-    <div style={{
-      display: 'flex', alignItems: 'center', justifyContent: 'center',
-      minHeight: '100vh', background: 'var(--bg-base)',
-    }}>
-      <div style={{
-        width: 20, height: 20, borderRadius: '50%',
-        border: '2px solid var(--accent-dim)',
-        borderTopColor: 'var(--accent)',
-        animation: 'spin 0.6s linear infinite',
-      }} />
-      <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
-    </div>
-  );
-}
 
 function HomePage() {
   const { content } = usePortfolioContent();
@@ -222,7 +205,7 @@ function HomePage() {
 
 export default function App() {
   return (
-    <Suspense fallback={<PageLoader />}>
+    <Suspense fallback={<div style={{ minHeight: '100vh', background: 'var(--bg-base)' }} />}>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/products" element={<ProductsPage />} />
