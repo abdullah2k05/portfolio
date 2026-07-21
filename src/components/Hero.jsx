@@ -1,6 +1,18 @@
+import { useEffect } from 'react';
+
 const ProfilePhoto = "/images/me.jpg";
 
 export default function Hero() {
+  useEffect(() => {
+    const link = document.createElement('link');
+    link.rel = 'preload';
+    link.as = 'image';
+    link.href = ProfilePhoto;
+    link.fetchPriority = 'high';
+    document.head.appendChild(link);
+    return () => link.remove();
+  }, []);
+
   return (
     <section id="hero">
       <div className="hero-grid"></div>
@@ -21,7 +33,7 @@ export default function Hero() {
           </p>
           <div className="hero-cta">
             <a href="#projects" className="btn-primary">
-              <span>View Projects</span>
+              View Projects
             </a>
             <a href="/products" className="btn-outline">
               View Products
@@ -45,13 +57,14 @@ export default function Hero() {
             <picture>
               <img
                 src={ProfilePhoto}
-                alt="Muhammad Abdullah"
+                alt="Muhammad Abdullah — Full-Stack Product Engineer"
                 className="hero-photo"
                 width={1200}
                 height={675}
                 loading="eager"
                 fetchPriority="high"
-                style={{ width: "100%", height: "auto", objectFit: "cover" }}
+                decoding="async"
+                style={{ width: "100%", height: "auto", objectFit: "cover", aspectRatio: "1200/675" }}
               />
             </picture>
             <div className="image-corner tl"></div>

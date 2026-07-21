@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -11,14 +11,33 @@ import Education from './components/Education';
 import CTABanner from './components/CTABanner';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import Admin from './pages/Admin';
-import ProductsPage from './pages/ProductsPage';
-import PrivacyPolicy from './pages/PrivacyPolicy';
-import Terms from './pages/Terms';
-import ArticlesPage from './pages/ArticlesPage';
-import CaseStudyWrapper from './pages/CaseStudyWrapper';
 import useSEO from './hooks/useSEO';
 import { usePortfolioContent } from './hooks/usePortfolioContent';
+
+const Admin = lazy(() => import('./pages/Admin'));
+const ProductsPage = lazy(() => import('./pages/ProductsPage'));
+const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
+const Terms = lazy(() => import('./pages/Terms'));
+const ArticlesPage = lazy(() => import('./pages/ArticlesPage'));
+const CaseStudyWrapper = lazy(() => import('./pages/CaseStudyWrapper'));
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
+
+function PageLoader() {
+  return (
+    <div style={{
+      display: 'flex', alignItems: 'center', justifyContent: 'center',
+      minHeight: '100vh', background: 'var(--bg-base)',
+    }}>
+      <div style={{
+        width: 20, height: 20, borderRadius: '50%',
+        border: '2px solid var(--accent-dim)',
+        borderTopColor: 'var(--accent)',
+        animation: 'spin 0.6s linear infinite',
+      }} />
+      <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
+    </div>
+  );
+}
 
 function HomePage() {
   const { content } = usePortfolioContent();
@@ -51,6 +70,7 @@ function HomePage() {
       },
     ],
   });
+
   useEffect(() => {
     const revealEls = document.querySelectorAll('.reveal');
     if (revealEls.length === 0) return;
@@ -94,18 +114,6 @@ function HomePage() {
     const cleanupFns = [];
 
     const setupTimer = setTimeout(() => {
-      document.querySelectorAll('.skill-card').forEach((card) => {
-        const onCardMove = (e) => {
-          const rect = card.getBoundingClientRect();
-          const x = ((e.clientX - rect.left) / rect.width * 100).toFixed(1);
-          const y = ((e.clientY - rect.top) / rect.height * 100).toFixed(1);
-          card.style.setProperty('--mx', `${x}%`);
-          card.style.setProperty('--my', `${y}%`);
-        };
-        card.addEventListener('mousemove', onCardMove);
-        cleanupFns.push(() => card.removeEventListener('mousemove', onCardMove));
-      });
-
       document.querySelectorAll('[data-tilt]').forEach((el) => {
         const onTiltMove = (e) => {
           const rect = el.getBoundingClientRect();
@@ -113,7 +121,7 @@ function HomePage() {
           const cy = rect.top + rect.height / 2;
           const dx = (e.clientX - cx) / (rect.width / 2);
           const dy = (e.clientY - cy) / (rect.height / 2);
-          el.style.transform = `translateY(-6px) rotateY(${dx * 5}deg) rotateX(${-dy * 5}deg)`;
+          el.style.transform = `translateY(-4px) rotateY(${dx * 4}deg) rotateX(${-dy * 4}deg)`;
         };
         const onTiltLeave = () => {
           el.style.transform = '';
@@ -214,15 +222,20 @@ function HomePage() {
 
 export default function App() {
   return (
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/products" element={<ProductsPage />} />
-      <Route path="/ribal" element={<Admin />} />
-      <Route path="/ribal/*" element={<Admin />} />
-      <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-      <Route path="/terms" element={<Terms />} />
-      <Route path="/articles" element={<ArticlesPage />} />
-      <Route path="/:slug" element={<CaseStudyWrapper />} />
-    </Routes>
+    <Suspense fallback={<PageLoader />}>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/products" element={<ProductsPage />} />
+        <Route path="/ribal" element={<Admin />} />
+        <Route path="/ribal/*" element={<Admin />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms" element={<Terms />} />
+        <Route path="/articles" element={<ArticlesPage />} />
+        <Route path="/articles/:slug" element={<CaseStudyWrapper />} />
+        <Route path="/404" element={<NotFoundPage />} />
+        <Route path="/:slug" element={<CaseStudyWrapper />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </Suspense>
   );
 }
