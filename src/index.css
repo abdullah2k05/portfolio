@@ -1792,7 +1792,8 @@ textarea.admin-input {
   padding: 40px 0 80px;
 }
 
-/* Articles Section (homepage grid) */
+/* Articles Section */
+#articles-page { background: var(--black); }
 #articles { background: var(--black); }
 
 .articles-grid {
@@ -1802,31 +1803,45 @@ textarea.admin-input {
 }
 
 .article-card {
-  padding: 32px;
-  background: var(--black-3);
+  padding: 28px;
+  background: var(--black-2);
   border: 1px solid rgba(255,255,255,0.04);
+  border-left: 2px solid rgba(200,200,200,0.08);
   display: flex;
   flex-direction: column;
   text-decoration: none;
-  transition: transform 0.3s var(--ease-out), border-color 0.3s, box-shadow 0.3s;
+  transition: transform 0.3s var(--ease-out), border-color 0.3s, box-shadow 0.3s,
+    border-left-color 0.3s;
+  position: relative;
+}
+
+.article-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(200,200,200,0.06), transparent);
+  pointer-events: none;
 }
 
 .article-card:hover {
-  transform: translateY(-6px);
-  border-color: rgba(200,200,200,0.15);
-  box-shadow: 0 16px 40px rgba(0,0,0,0.5);
+  transform: translateY(-4px);
+  border-color: rgba(200,200,200,0.12);
+  border-left-color: var(--accent);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.5),
+    -4px 0 24px rgba(200,200,200,0.04);
 }
 
 .article-card-meta {
   display: flex;
   gap: 12px;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 .article-card-num {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 10px;
   letter-spacing: 2px;
   color: var(--gray-light);
 }
@@ -1839,25 +1854,55 @@ textarea.admin-input {
 
 .article-card h3 {
   font-family: var(--font-display);
-  font-size: 22px;
+  font-size: 20px;
   letter-spacing: 1px;
-  color: var(--white);
+  color: var(--white-pure);
   margin-bottom: 8px;
+  line-height: 1.1;
 }
 
 .article-card p {
   font-size: 13px;
   color: var(--gray-light);
-  line-height: 1.6;
-  margin-bottom: 24px;
-  flex-grow: 1;
+  line-height: 1.65;
+  margin-bottom: 20px;
 }
 
 .article-card-tech {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
+}
+
+.article-card-highlights {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-grow: 1;
+}
+
+.article-card-highlights li {
+  font-size: 12px;
+  line-height: 1.55;
+  color: var(--silver);
+  padding-left: 16px;
+  position: relative;
+}
+
+.article-card-highlights li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 5px;
+  height: 5px;
+  background: var(--gray);
+  border-radius: 50%;
+  opacity: 0.5;
 }
 
 .article-card-cta {
@@ -1865,16 +1910,18 @@ textarea.admin-input {
   font-size: 10px;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  color: var(--gray-light);
+  color: var(--silver);
   display: flex;
   align-items: center;
   gap: 8px;
-  transition: color 0.2s;
-  margin-top: auto;
+  transition: color 0.2s, gap 0.3s var(--ease-out);
+  padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,0.04);
 }
 
 .article-card:hover .article-card-cta {
   color: var(--white);
+  gap: 12px;
 }
 
 .article-card-cta svg {
