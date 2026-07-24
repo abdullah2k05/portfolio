@@ -664,6 +664,80 @@ export const caseStudies = [
         'SSR e-commerce, React 19, Express 4, Vite, Google AI, Sharp, Cloudinary, ecommerce',
     },
   },
+{
+    slug: 'record-keeping',
+    title: 'Record Keeping',
+    subtitle: 'Family Financial Evidence & Accountability System',
+    date: '2026',
+    projectNumber: '11',
+    heroImage: null,
+    liveUrl: null,
+    githubUrl: 'https://github.com/Abdullah2k05/record-keeping',
+    problem:
+      'Informal family businesses (agriculture, dairy farms, partnerships) operate on trust, not contracts. When trust breaks, there is no evidence trail — no record of who paid what, who owes whom, or what was promised. Existing accounting tools are too formal, too complex, and assume a level of digital literacy and legal structure that family-run operations simply do not have.',
+    solution:
+      'Built a full-stack Next.js 16 application with Supabase that serves as an irrefutable, evidence-backed record of every financial event, expense, claim, work log, and promise. The system features a polymorphic evidence model (receipts, photos, screenshots, voice memos), automatic claim generation from expenses, audit trail with version history for every change, and a unified timeline view — all secured by role-based access control.',
+    features: [
+      'Financial Events — Track payments, transfers, and in-kind contributions with date, amount, method, and reason',
+      'Personal Expenses — Log out-of-pocket business spending with receipt evidence and auto-generated claims',
+      'Claims Engine — Auto-created from expenses, tracks reimbursement progress with partial payment support',
+      'Work Logs — Log labor hours even when no money changes hands, with trust-level scoring',
+      'Daily Journal — Diary-style unstructured context that structured data cannot capture',
+      'Polymorphic Evidence — Upload receipts, photos, screenshots, voice memos linked to any entity',
+      'Cases — Group related records (e.g., "Harvest 2026") for organized investigation',
+      'Follow-ups & Reminders — Track the human story behind each claim with scheduled prompts',
+      'Unified Timeline — Chronological feed of all activity across every entity type',
+      'Reports & Export — Per-person, per-case, date-range summaries with PDF export via jsPDF',
+      'Global Search — Cross-entity search across 6 tables with debounced input',
+      'Audit Trail — Immutable history of every create, update, archive, and restore action',
+      'Version History — Git-style version snapshots tracking full data diff per change',
+      'Dark Mode — System-aware with manual toggle, persisted to localStorage',
+      'PWA — Installable, works offline with service worker caching',
+      'Role-Based Access — Admin, contributor, and viewer roles with granular permission arrays',
+    ],
+    architecture:
+      'Next.js 16 App Router with React 19 serves as the full-stack framework. Supabase provides authentication (SSR with JWT), the PostgreSQL database (19 tables with full RLS), and file storage (evidence bucket). The data layer is split into queries.ts (reads) and mutations.ts (writes) — every mutation automatically creates an audit_log entry, a version_history snapshot, and an activity_timeline record. The claims engine uses a GENERATED ALWAYS AS column for remaining_amount, auto-calculated from total_amount minus sum of claim_payments. Tailwind CSS 4 provides styling with a custom dark mode implemented via CSS custom properties and bundling avoids runtime theme flicker with an inline localStorage script. Zustand manages only auth and theme state — all business data lives in Supabase. Cloudinary is configured for optional file upload CDN.',
+    folderStructure:
+      'src/app/ (22 route groups: dashboard, financial-events, expenses, claims, work-logs, journal, people, cases, evidence, reports, search, settings, admin, api), src/components/ (layout/: AppShell, AuthGuard, Header, Sidebar; ui/: 12 reusable primitives; domain-specific: claims/, dashboard/, people/, reports/, search/, timeline/), src/lib/ (db/: queries.ts, mutations.ts, claim-helpers.ts; supabase/: client, server, middleware; utils/: constants, format), src/store/ (authStore.ts, themeStore.ts), src/types/ (database.ts with 21 table types, models.ts with exhaustive union types), supabase/migrations/ (8 migration files from initial schema to claim receipt fields).',
+    technologies: [
+      'Next.js 16',
+      'React 19',
+      'TypeScript',
+      'Tailwind CSS 4',
+      'Supabase (PostgreSQL + Auth + Storage)',
+      'Zustand',
+      'date-fns',
+      'jsPDF',
+      'jspdf-autotable',
+      'Cloudinary',
+      'Lucide React',
+      'react-hot-toast',
+      'clsx',
+      'tailwind-merge',
+    ],
+    challenges: [
+      'Polymorphic relations (evidence, notes, tags attachable to any entity) required careful RLS policy design and TypeScript generics to maintain type safety while keeping the schema flexible.',
+      'The claims engine with auto-calculated remaining_amount, partial payment tracking, and status transitions (pending → partial → settled → overdue → void) required a state machine approach to prevent invalid transitions.',
+      'Audit trail + version history + activity timeline on every mutation created a write amplification challenge — each user action triggers 3-4 additional writes. Optimized with sequential DB calls in transactions rather than individual requests.',
+    ],
+    lessonsLearned: [
+      'Soft-delete (archive/void pattern) is essential for financial applications — hard deletes destroy the audit trail and make dispute resolution impossible. Every table uses archived_at timestamps instead of DELETE.',
+      'Supabase Row-Level Security combined with a role/permission system provides database-level access control that cannot be bypassed by the application layer — a significant security advantage for sensitive financial data.',
+      'A polymorphic evidence model (related_table + related_id) is more flexible than separate evidence tables per entity, but requires composite indexes and careful query planning to avoid performance degradation.',
+    ],
+    futureImprovements: [
+      'Multi-language support (Urdu/English) for accessibility in rural family business contexts',
+      'AI-powered receipt OCR to auto-extract amounts, dates, and vendor names from uploaded evidence photos',
+      'Offline-first mode with local Supabase replication for areas with unreliable internet connectivity',
+    ],
+    seo: {
+      title: 'Record Keeping — Family Financial Evidence System | Abdullah Portfolio',
+      description:
+        'Case study: A Next.js 16 + Supabase family financial accountability system with polymorphic evidence, audit trail, version history, claims engine, and role-based access control.',
+      keywords:
+        'record keeping, family business, financial tracking, Supabase, Next.js, audit trail, evidence management, claims tracking',
+    },
+  },
 ];
 
 export function getCaseStudy(slug) {

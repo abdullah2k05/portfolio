@@ -30,6 +30,7 @@ const caseStudySlugs = [
   "focus-app",
   "rehman-royal-store",
   "cooking-oil-store",
+  "record-keeping",
 ];
 
 const routes = [

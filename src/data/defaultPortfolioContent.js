@@ -174,6 +174,15 @@ export const defaultPortfolioContent = {
       liveUrl: "#",
       githubUrl: "#",
     },
+    {
+      id: "project-9",
+      title: "Record Keeping",
+      description:
+        "Family Financial Evidence & Accountability System for informal family businesses. Tracks financial events, expenses, claims, work logs, and evidence with a full audit trail, version history, and role-based access.",
+      tech: ["Next.js 16", "Supabase", "PostgreSQL", "Zustand", "Cloudinary", "jsPDF", "Tailwind CSS 4"],
+      liveUrl: "#",
+      githubUrl: "https://github.com/Abdullah2k05/record-keeping",
+    },
   ],
   products: [],
   photoSlides: [
