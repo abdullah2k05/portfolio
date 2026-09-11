@@ -1,0 +1,17 @@
+name: Guestbook
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+  issues:
+    types: [opened, edited, closed, reopened, deleted]
+
+jobs:
+  update-guestbook:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: nfhipona/guestbook-workflow@main
