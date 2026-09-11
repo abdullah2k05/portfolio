@@ -13,5 +13,5 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v4
-      - uses: nfhipona/guestbook-workflow@main
+      - uses: actions/checkout@v7
+      - uses: nfhipona/guestbook-workflow@v2.0.2
