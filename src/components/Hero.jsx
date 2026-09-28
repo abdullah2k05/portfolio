@@ -1,14 +1,14 @@
-import { useEffect } from 'react';
+import { useEffect } from "react";
 
 const ProfilePhoto = "/images/me.jpg";
 
 export default function Hero() {
   useEffect(() => {
-    const link = document.createElement('link');
-    link.rel = 'preload';
-    link.as = 'image';
+    const link = document.createElement("link");
+    link.rel = "preload";
+    link.as = "image";
     link.href = ProfilePhoto;
-    link.fetchPriority = 'high';
+    link.fetchPriority = "high";
     document.head.appendChild(link);
     return () => link.remove();
   }, []);
@@ -42,12 +42,12 @@ export default function Hero() {
               Get in Touch
             </a>
             <a
-              href="/Muhammad-Abdullah-CV.pdf"
+              href="/Muhammad_Abdullah_Resume_Full_Stack.pdf"
               className="btn-outline"
               target="_blank"
               rel="noopener noreferrer"
             >
-              View CV
+              View Resume
             </a>
           </div>
         </div>
@@ -64,7 +64,12 @@ export default function Hero() {
                 loading="eager"
                 fetchPriority="high"
                 decoding="async"
-                style={{ width: "100%", height: "auto", objectFit: "cover", aspectRatio: "1200/675" }}
+                style={{
+                  width: "100%",
+                  height: "auto",
+                  objectFit: "cover",
+                  aspectRatio: "1200/675",
+                }}
               />
             </picture>
             <div className="image-corner tl"></div>
