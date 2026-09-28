@@ -26,10 +26,10 @@ export default function Hero() {
           <h1 className="hero-name">
             MUHAMMAD<span>ABDULLAH</span>
           </h1>
-          <h2 className="hero-role">Full-Stack Product Engineer</h2>
+          <h2 className="hero-role">Full-Stack Engineer & Data Science Student</h2>
           <p className="hero-desc">
-            I build scalable, multi-surface ecosystems and AI-powered platforms
-            at the intersection of entrepreneurship and innovation.
+            I build web, mobile, and AI products with TypeScript, React, Node.js,
+            and Supabase — including an app published on Google Play.
           </p>
           <div className="hero-cta">
             <a href="#projects" className="btn-primary">

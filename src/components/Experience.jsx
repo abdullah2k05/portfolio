@@ -9,9 +9,9 @@ export default function Experience({ experience = [] }) {
         <div className="exp-timeline">
           {experience.map((exp, idx) => (
             <div key={exp.id} className={`exp-item reveal reveal-delay-${(idx % 3) + 1}`}>
-              <div className="exp-year">{exp.role}</div>
+              <div className="exp-year">{exp.period || exp.role}</div>
               <h3>{exp.title.toUpperCase()}</h3>
-              <h4>{exp.subtitle || exp.role}</h4>
+              <h4>{exp.role}{exp.subtitle ? ` — ${exp.subtitle}` : ''}</h4>
               <p>{exp.description}</p>
               {exp.linkUrl && exp.linkLabel && (
                 <a href={exp.linkUrl} target="_blank" rel="noreferrer" style={{ color: '#c7c7c7', textDecoration: 'underline', fontSize: 13, marginTop: 8, display: 'inline-block' }}>

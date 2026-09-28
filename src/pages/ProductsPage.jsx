@@ -9,14 +9,14 @@ export default function ProductsPage() {
   const { content } = usePortfolioContent();
 
   useSEO({
-    title: 'Products — Digital Tools & Solutions | Muhammad Abdullah',
+    title: 'Products — Tazkir, GitHub Reader AI & Invoice Maker | Muhammad Abdullah',
     description:
-      'Browse digital products, tools, and solutions built by Muhammad Abdullah — AI automation tools, paid utilities, and developer resources.',
+      'Products built by Muhammad Abdullah: Tazkir (free on Google Play), GitHub Reader AI (AI codebase assistant, $9/month), and Invoice Maker (free online invoicing).',
     keywords:
-      'digital products, AI tools, developer tools, automation, paid utilities, software products',
-    ogTitle: 'Products & Digital Tools | Muhammad Abdullah',
+      'Tazkir, GitHub Reader AI, Invoice Maker, Islamic app, codebase RAG, free invoicing, digital products',
+    ogTitle: 'Products — Tazkir, GitHub Reader AI & Invoice Maker',
     ogDescription:
-      'Browse AI automation tools, paid utilities, and developer solutions.',
+      'Free and paid products by Muhammad Abdullah: Tazkir on Google Play, GitHub Reader AI, and Invoice Maker.',
   });
 
   useEffect(() => {

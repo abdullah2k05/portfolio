@@ -28,7 +28,7 @@ export default function Terms() {
     },
     {
       title: 'Third-Party Services',
-      content: 'This website uses third-party services including Google Analytics, Google AdSense, EmailJS, and Supabase. Your use of these services is subject to their respective terms and policies. We are not responsible for the actions or content of these third parties.',
+      content: 'This website uses third-party services including Google Analytics, Google AdSense, EmailJS, and Vercel. Your use of these services is subject to their respective terms and policies. We are not responsible for the actions or content of these third parties.',
     },
     {
       title: 'Disclaimer',

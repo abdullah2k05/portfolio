@@ -17,7 +17,6 @@ import NotFoundPage from './pages/NotFoundPage';
 import useSEO from './hooks/useSEO';
 import { usePortfolioContent } from './hooks/usePortfolioContent';
 
-const Admin = lazy(() => import('./pages/Admin'));
 const ProductsPage = lazy(() => import('./pages/ProductsPage'));
 const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
 const Terms = lazy(() => import('./pages/Terms'));
@@ -32,7 +31,7 @@ function HomePage() {
         '@type': 'Person',
         name: 'Muhammad Abdullah',
         url: 'https://mabdullah.top',
-        jobTitle: 'AI Automation Engineer & Data Science Specialist',
+        jobTitle: 'Full-Stack Software Engineer & Data Science Student',
         sameAs: [
           'https://github.com/Abdullah2k05',
           'https://linkedin.com/in/abdullah2k05',
@@ -44,7 +43,7 @@ function HomePage() {
         name: 'Muhammad Abdullah Portfolio',
         url: 'https://mabdullah.top',
         description:
-          'Portfolio showcasing AI workflows, backend development, and data science projects.',
+          'Portfolio of Muhammad Abdullah — full-stack engineer and Data Science student. Web, mobile, and AI products built with TypeScript, React, Node.js, and Supabase.',
         potentialAction: {
           '@type': 'SearchAction',
           target: 'https://mabdullah.top/?q={search_term_string}',
@@ -209,8 +208,6 @@ export default function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/products" element={<ProductsPage />} />
-        <Route path="/ribal" element={<Admin />} />
-        <Route path="/ribal/*" element={<Admin />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms" element={<Terms />} />
         <Route path="/articles" element={<ArticlesPage />} />

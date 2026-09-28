@@ -4,21 +4,21 @@ const SITE_URL = 'https://mabdullah.top';
 const DEFAULT_OG_IMAGE = 'https://mabdullah.top/og-image.png';
 
 const DEFAULTS = {
-  title: 'Muhammad Abdullah | AI Automation Engineer & Data Science Specialist',
+  title: 'Muhammad Abdullah | Full-Stack Engineer & Data Science Student',
   description:
-    'Muhammad Abdullah — AI Automation Engineer & Data Science Specialist. Portfolio showcasing AI workflows, backend development, and data science projects.',
+    'Muhammad Abdullah — full-stack engineer and Data Science student at PUCIT. Builds web, mobile, and AI products with TypeScript, React, Node.js, and Supabase, including Tazkir on Google Play.',
   keywords:
-    'AI, automation, data science, full-stack developer, portfolio, MERN, Next.js, Python, React, TypeScript',
+    'full-stack developer, data science, TypeScript, React, Node.js, Supabase, Next.js, AI, RAG, portfolio, PUCIT',
   robots: 'index, follow',
-  ogTitle: 'Muhammad Abdullah | AI Automation Engineer & Data Science Specialist',
+  ogTitle: 'Muhammad Abdullah | Full-Stack Engineer & Data Science Student',
   ogDescription:
-    'Portfolio showcasing AI workflows, backend development, and data science projects.',
+    'Full-stack engineer & Data Science student. Web, mobile, and AI products built with TypeScript, React, Node.js, and Supabase.',
   ogImage: DEFAULT_OG_IMAGE,
   ogType: 'website',
   twitterCard: 'summary_large_image',
-  twitterTitle: 'Muhammad Abdullah | AI Automation Engineer & Data Science Specialist',
+  twitterTitle: 'Muhammad Abdullah | Full-Stack Engineer & Data Science Student',
   twitterDescription:
-    'Portfolio showcasing AI workflows, backend development, and data science projects.',
+    'Full-stack engineer & Data Science student. Web, mobile, and AI products built with TypeScript, React, Node.js, and Supabase.',
   twitterImage: DEFAULT_OG_IMAGE,
   canonical: SITE_URL,
 };

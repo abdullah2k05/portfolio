@@ -32,7 +32,7 @@ export default function PrivacyPolicy() {
     },
     {
       title: 'Third-Party Services',
-      content: 'We use the following third-party services: Google Analytics (traffic analysis), Google AdSense (advertising), EmailJS (contact form processing), and Supabase (content management). Each service has its own privacy policy governing the use of your data.',
+      content: 'We use the following third-party services: Google Analytics (traffic analysis), Google AdSense (advertising), EmailJS (contact form processing), and Vercel (hosting and delivery). Each service has its own privacy policy governing the use of your data.',
     },
     {
       title: 'Data Security',
